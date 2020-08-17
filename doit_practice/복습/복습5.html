@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    let sum = 0;
+    for(let i = 0; i < 6; i++){ // 0번 부터 5번까지만 반복. 
+        console.log(i); // 1 2 3 4 5
+        sum += i;   // sum에 반복 한번 할때마다 반복하는 횟수를 더하기
+    // 결국 값이 0 인 sum 이라는 변수에 0 부터 5를 더하는 꼴이 된다. 
+    // 카운터 변수 i (반복 횟수의 기준이 되는 변수)
+    // 0 + 0
+    // (0 + 0) + 1
+    // (0 + 0 + 1) + 2
+    // (0 + 0 + 1 + 2) + 3
+    // (0 + 0 + 1 + 2 + 3) + 4
+    // (0 + 0 + 1 + 2 + 3 + 4) + 5
+    // (0 + 0 + 1 + 2 + 3 + 4 + 5)
+    }
+    console.log(`1부터 5까지 더하면 ${sum}`); // 15
+    console.log(sum);
+    
+    
+</script>
+</body>
+</html>

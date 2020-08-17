@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>도서 관리 프로그램 - 객체 만들기</title>
+    <style>
+        body {
+            background: url('../images/bg.png') repeat-x top left;
+        }
+
+        h1 {
+            margin-top: 180px;
+        }
+
+        p {
+            width: 400px;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+
+<body>
+    <script>
+        function Book(title, author, pages, price) {
+            this.title = title;
+            this.author = author;
+            this.pages = pages;
+            this.price = price
+        }
+        let html = new Book('자바스크립트', '홍길동', 500, 34000);
+        let youtube = new Book('유투브 영상 만들기', '강주현', 300, 29000);
+        let python = new Book('점프 투 파아썬', '오세진', 200, 39000);
+
+        let bookList = [html, youtube, python];
+
+        console.log(html); // Book { title: '자바스크립트', author: '홍길동', pages: 500, price: 34000 }
+        console.log(youtube); // Book { title: '유투브 영상 만들기', author: '강주현', pages: 300, price: 29000 }
+        console.log(python); // Book { title: '점프 투 파아썬', author: '오세진', pages: 200, price: 39000 }
+        console.log(bookList);
+        /* [
+          Book { title: '자바스크립트', author: '홍길동', pages: 500, price: 34000 },
+          Book { title: '유투브 영상 만들기', author: '강주현', pages: 300, price: 29000 },
+          Book { title: '점프 투 파아썬', author: '오세진', pages: 200, price: 39000 }
+        ]
+        */
+
+        document.write(`<h1>책 제목으로 살펴보기</h1>`)
+        for (let i = 0; i < bookList.length; i++) {
+            document.write(`<p>${bookList[i].title}</p>`)
+            document.write(`<p>${bookList[i].price}</p>`)
+        }
+    </script>
+</body>
+
+</html>

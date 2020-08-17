@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 함수를 실행하는 방법에는 함수를 선언하고 함수 이름을 사용해서 실행하는 것이 
+        // 기본적인 방법이지만, 이 외에도 함수를 실행하는 방법들이 있다.
+        // 그 중에 화살표 함수를 살펴보겠다.
+
+        // ** return : 함수의 결과값을 함수 밖으로 넘기는 값을 return 값, 또는 반환값이라고 한다.
+        // 반환값은 다른 계산에 적용하여 써먹거나, 다른 곳에 표시해야 할때 함수의 반환한다.
+
+        // 화살표 함수 : 
+        // 1. 익명함수를 쓸때 대체함수로 많이 쓰인다. 
+        // 2. 매개변수(함수를 실행하기 위해 필요하다고 지정한 값)가 하나라면 괄호 없이 매개변수 하나만 작성한다.
+
+        // 1번 기존 익명함수 
+        let hi1 = function () {
+            return '세진씨 안녕하세요';
+        }
+        console.log(hi1()); // 세진씨 안녕하세요
+
+        // 1번 화살표 함수 
+        let hi2 = () => {
+            return '주현씨 안녕하세요';
+        }
+        console.log(hi2()); // 주현씨 안녕하세요
+
+        // 1번-1 화살표 함수(return 문 없는 화살표 함수)
+        let hi3 = () => '주현씨 안녕하세요';
+        console.log(hi3()); // 주현씨 안녕하세요. 
+
+
+        //--------------------------------------------------------------
+
+
+        // 2번 기존 익명함수
+        let greet1 = function (name) {
+            return `${name}님 안녕하세요`;
+        }
+        console.log(greet1('세진')); // 세진님 안녕하세요.
+
+        // 2번 화살표 함수
+        let greet2 = (name) => {
+            return `${name}님 안녕하세요`;
+        }
+        console.log(greet2('주현')); // 주현님 안녕하세요.
+
+        // 2번-2 화살표 함수(return 문 없는 화살표 함수)
+        let greet3 = (name) => `${name}님 안녕하세요`;
+        console.log(greet3('주현')); // 주현님 안녕하세요.
+
+
+
+        // -----------------------------------------------------------------
+
+
+
+        // 3번 기존 익명함수
+        let add1 = function (a, b) {
+            return a + b;
+        }
+        console.log(add1(10, 30)); // 30
+
+        // 3번 화살표 함수
+        let add2 = (a, b) => {
+            return a + b;
+        }
+        console.log(add2(10, 40)); // 40
+
+        // 3번-1 화살표함수(return문 없는 화살표 함수)
+        let add3 = (a, b) => a + b;
+        console.log(add3(10, 40)); // 50
+        
+        
+    </script>
+</body>
+
+</html>

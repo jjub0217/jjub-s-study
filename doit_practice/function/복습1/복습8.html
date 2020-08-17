@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var myVar = 100;  // 전역변수 myVar
+        test();
+        document.write(`myVar is ${myVar}`);
+        
+        function test(){
+            var myVar = 50; // 지역변수 myVar
+            // document.write(`myVar is ${myVar}`);
+            
+        }
+
+        // 위 코드에서, 전역에서 쓰인 변수와 지역에서 쓰인 변수는 
+        // 동일한 이름으로 쓰인 변수이지만, 서로 다른 스코프에서 쓰였기 때문에 
+        // 서로 영향을 주고 받지 않는다. 
+        // 그래서 document.write 함수를 전역에 쓰면 당연히 전역에 쓰인 변수에 
+        // 할당된 값이 나올것이고, 함수 스코프 안에서 document.write 함수를 쓰면
+        // 지역에 쓰인 변수에 할당한 값이 나올것이다. 
+
+        // 또한 서로 다른 스코프에서 쓰인 변수라고 해도 
+        // 변수이름 앞에 예약어를 각각 사용하면 서로 영향을 주고 받지 않지만
+        // 전역에 쓰이는 변수 앞에 예약어를 사용하고 
+        // 지역에 쓰이는 변수 앞에 예약어를 사용하지 않으면 서로 영향을 미치기 때문에 
+        // 그때는 전역에 쓰인 변수에 할당된 값은 무시되고 함수 스코프에서 쓰인 변수에
+        // 할당된 값으로 재할당이 된다. 
+        
+    </script>
+</body>
+
+</html>

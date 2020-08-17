@@ -1,0 +1,13 @@
+let done = true;
+let message = '';
+
+if(done){
+    message = '완료';
+}else{
+    message = '미완료';
+}
+console.log(message);
+
+
+message = done ? '완료' : '미완료'
+console.log(message);

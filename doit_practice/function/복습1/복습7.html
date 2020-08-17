@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let num1 = +prompt('첫번째 숫자는?');
+        let num2 = +prompt('두번째 숫자는?');
+
+        let result = addNumber(num1, num2);
+        alert(`두 수를 더한 값은 ${result}입니다.`);
+
+        // function addNumber(a, b){
+        //     let sum = a + b;
+        //     return sum;
+        // }
+
+        // 바로 위 코드를 간단히 cording 하려면 바로 아래 코드처럼 cording 하면 된다. 
+        
+        function addNumber(a, b){
+            return a + b;
+        }
+
+    </script>
+</body>
+</html>

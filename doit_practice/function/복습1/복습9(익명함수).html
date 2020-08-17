@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 함수를 실행하는 방법에는 함수를 선언하고 함수 이름을 사용해서 실행하는 것이 
+        // 기본적인 방법이지만, 이 외에도 함수를 실행하는 방법들이 있다.
+        // 그 중에 익명함수를 살펴보겠다. 
+
+        // 익명함수 : 1. 익명함수 자체가 하나의 표현식이기 때문에 변수에 할당할수 있다. 
+        //            2. 또 다른 함수의 매개변수로도 사용 할 수 있다.   
+
+        let add = function (a, b) {
+            return a + b;
+        }
+        add(10, 20); // 변수 add 에 익명함수를 할당한 상태에서 익명함수를 실행한 상황이다.
+        // 변수 add를 사용해서 함수를 실행하고 그 결과값을 또 다른 변수에 할당할수 있다. 
+        // 바로 아래 코드처럼 말이다. 
+        console.log(add(10, 20));
+        
+        let sum = add(10, 20); // <- 바로 위코드 add(10, 20) 과 같은 식이다.  
+        console.log(sum);
+        
+    </script>
+</body>
+
+</html>

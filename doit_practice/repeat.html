@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let result = 0;
+        for (let i = 0; i < 101; ++i) {
+            result += i;
+            // result = result + i
+            // 0 + 0 // 0
+            // +1
+            // 0  + 2
+            // console.log(result);
+            // document.write(result); // <- 여기서 하는거랑
+
+        }
+        document.write(result); // <- 여기서 하는거의 차이가 뭐지?
+    // 여기에 하는 이유는 false 이면 for 문을 벗어나서 해당 코드를 실행하기 위해서 여기에 썼다.
+    </script>
+</body>
+
+</html>

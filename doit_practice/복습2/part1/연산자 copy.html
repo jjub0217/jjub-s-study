@@ -1,0 +1,39 @@
+  
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>집중이 되시나요?</title>
+    <style>
+  
+		button {
+			padding:5px 10px;
+			border:1px solid #ccc;			
+			font-size:1em;
+		}
+
+    </style>
+</head>
+<body>	
+		<button class="study" id="studyTime">Today Study</button>
+    	
+    
+    <script>
+   
+		const $button = document.querySelector('button');
+		
+		$button.onclick = function()  {
+			let time = prompt(`오늘 공부 잘되요?`, `아니요/네`);
+			if(time === '아니요'){
+				alert(`그러면 저 for문 별찍기 개행문자 알려주세요`);
+			}else{
+				alert(`화이팅 화이팅`);
+			}
+		}
+
+
+    </script>
+</body>
+</html>

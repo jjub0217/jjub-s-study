@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //for of 문
+        let seasons = ['봄', '여름', '가을', '겨울'];
+        for (let season of seasons) { // 배열 안에 있는 요소들을 나열하는것.
+            console.log(season);
+        }
+
+        //for in 문
+        // 객체안에 있는 요소들에 대한 작업을 처리할때 사용
+
+        const boyfriend = {
+            name: '오세진',
+            age: 33,
+            sex: 'men'
+        }
+        console.log(Object.entries(boyfriend));
+        console.log(Object.keys(boyfriend));
+        console.log(Object.values(boyfriend));
+        console.log(boyfriend.age);
+        
+    </script>
+</body>
+
+</html>

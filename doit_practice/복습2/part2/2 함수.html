@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>함수</title>
+    <style>
+        button {
+	border:1px solid #ccc;
+	padding:10px 15px;
+	margin:20px auto;
+	font-size:16px;
+}
+
+body {
+	text-align: center;
+}
+    </style>
+	<!-- <link rel="stylesheet" href="css/add.css"> -->
+</head>
+<body>
+	<button>덧셈 계산하기</button>
+	<script>
+        const $button = document.querySelector('button');
+
+        $button.onclick = function addNumber(){
+            let sum = 10 + 20;
+            alert(sum);
+        }
+        // addNumber(10, 20);  <- 이벤트는 함수호출문을 하면 안된다. 함수를 
+//                                할당하기만 하면, 브라우저가 언제 이벤트를 발생할건지는 모르지만 언젠가는 할거다. 
+    </script>
+</body>
+</html>

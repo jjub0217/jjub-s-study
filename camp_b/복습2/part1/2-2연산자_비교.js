@@ -41,11 +41,14 @@ console.log(g >= f); // true
 //             /     = 숫자
 //             %     = (나머지를 구할 때)숫자
 
+const add = 1 + '2';
 const h = '안녕';
 const i = '하세요';
 const j = h + i;
 console.log(j); // 안녕하세요
 // console.log(h + i);  // 안녕하세요
+console.log(add); // '12'
+console.log(typeof add); //string <- JS엔진이 내부적으로 숫자 1을 문자열로 변환시켜서 결과값으로 문자열 '12'가 나온게 된다. 
 console.log(typeof h); // string
 console.log(typeof i); // string
 console.log(typeof j); // string

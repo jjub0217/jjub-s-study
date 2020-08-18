@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Circle 객체</title>
+	<style>
+		body {
+			text-align: center;
+			font-size: 1.2em;
+			line-height: 2em;
+		}
+	</style>
+</head>
+
+<body>
+	<script>
+		var r = prompt("원의 반지름은? (cm)");
+
+		function Circle(round) { // new 연산자를 사용하여 생성한 Circle의 인스턴스의 인수가 round 라는 변수에 전달된다. 
+
+			// this.length(){ 
+			//  	return round * 2 * 3.14;
+			//  };  // <- X : 구동이 안되는 코드
+			this.length = function () { // length 라는 프로퍼티 키(메소드)에 프로퍼티 값으로 함수가 들어간다.
+				// 생성자 함수를 사용해서 객체를 만들려면
+				// 생성자 함수 내부에는 this 라는 예약어와 = 연산자를 반드시 사용해야 하고,
+				return round * 2 * 3.14;
+			};
+
+			// square(){
+			// 	return round * round * 3.14;
+			// } // <- X  구동이 안되는 코드
+			this.square = function () {// square 라는 프로퍼티 키(메소드)에 프로퍼티 값으로 함수가 들어간다.
+				// 생성자 함수를 사용해서 객체를 만들려면
+				// 생성자 함수 내부에는 this 라는 예약어와 = 연산자를 반드시 사용해야 하고,
+				return round * round * 3.14;
+			}
+
+		}
+
+		let object = new Circle(r);
+		console.log(typeof length); // number
+		console.log(object); // Circle{length: f, square: f}
+		// document.write("반지름이 " + r + "cm일 때" + "<br>원의 둘레 : 약 " + object.length() + "cm <br>원의 넓이 : 약 " + object.square()+"cm<sup>2</sup>");
+		document.write(`반지름이 ${r}cm일 때 <br>원의 둘레 : 약 ${object.length()}cm <br>원의 넓이 : 약 ${object.square()}cm<sup>2</sup>`);
+	</script>
+</body>
+
+</html>

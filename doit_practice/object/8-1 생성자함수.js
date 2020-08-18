@@ -11,6 +11,7 @@
         this.price = price
     }
     let html = new Book('자바스크립트', '홍길동', 500, 34000);
+    console.log(typeof html); // object
     let youtube = new Book('유투브 영상 만들기', '강주현', 300, 29000)
     let python = new Book('점프 투 파아썬', '오세진', 200, 39000)
     // console.log(html);

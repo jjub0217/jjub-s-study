@@ -80,10 +80,16 @@
 	<div class="container">
 		<div class="day1">
 			<h3>우리 만난지</h3>
-			<p id="accent" class="accent"><span style="font-size:0.6em; font-style:italic">며칠?</span></p>
+			<p id="accent" class="accent">
+				<span style="font-size:0.6em; font-style:italic">며칠?</span>
+			</p>
 			</div>
 			<div class="bar">기념일 계산</div>
 			<div class="day2">
+				<ul>
+					<li class="item-title">처음 만난날</li>         
+					<li class="item-date" id="firstDate"></li>
+				</ul>
 				<ul>
 					<li class="item-title">100일</li>         
 					<li class="item-date" id="date100"></li>
@@ -103,8 +109,133 @@
 			</div>
         </div>
         <script>
-             let day = new Date();
-             console.log(day);
+			// 1. 오늘 날짜 객체 만들기
+			// 2. 처음 만난날 객체 만들기
+			// 3. 오늘 날짜 밀리초로 바꾸기
+			// 4. 처음 만난날 밀리초로 바꾸기
+
+			// 5. 두 날짜 차이 계산하기
+			// 6. 차이 계산한 밀리초를 날짜로 바꾸기 
+
+			// 7. 화면에 표시
+
+			 let today = new Date();
+			 console.log(today); // Mon Aug 17 2020 22:11:58
+
+			 let firstDay = new Date('2019-06-14');
+			 console.log(firstDay); // Fri Jun 14 2019 09:00:00
+
+			 let toNow = today.getTime(); // <- 오늘 날짜 밀리초로 바꾸기
+			//  console.log(today.getTime()); // 1597670050438
+			console.log(toNow); // 1597670050438
+
+			 let toFirst = firstDay.getTime(); // <- 처음 만난날 밀리초로 바뀌
+			//  console.log(firstDay.getTime()); // 1560470400000
+			 console.log(toFirst); // 1560470400000
+
+
+			// console.log(today.getTime() - firstDay.getTime());  // 37199792280
+			// let passedTime = today.getTime() - firstDay.getTime();
+			let passedTime = toNow - toFirst;
+			console.log(passedTime); // 37199792280
+
+			let passeDay = Math.round(passedTime/(1000*60*60*24)); // <- 밀리초를 날짜 로 변환하고 반올림
+			console.log(passeDay); // 431
+			document.querySelector('#accent').innerHTML = passeDay + '일';
+
+			/////////////////////////////////////////////////////////////////////////
+ 
+			let cal = toFirst + 100 * (1000*60*60*24); // <- 날짜를 밀리초로 바꾸기
+			console.log(cal); // 1569110400000 
+
+			let hundred = new Date(cal); // <- 밀리초로 바꾼걸 객체안에 넣기
+			console.log(hundred); // sun sep(9월) 22 2019 09:00:00
+			console.log(typeof hundred); // object
+
+			let year = hundred.getFullYear(); // <- 100일째 되는 날 연도 추출
+			console.log(year); // 2019
+
+			let month = hundred.getMonth() + 1; // <- 100일째 되는 날 월 추출
+			console.log(month); // 9
+
+			let date = hundred.getDate(); // <- 100일째 되는 날 일 추출
+			console.log(date); // 22
+
+			document.querySelector('#date100').innerHTML = `${year}년 ${month}월 ${date}일`;
+			
+			////////////////////////////////////////////////////////////////////////////
+
+			cal = toFirst + 200 * (1000*60*60*24);
+			console.log(cal);
+
+			let twoHundred = new Date(cal);
+			console.log(twoHundred);
+			
+			year = twoHundred.getFullYear();
+			console.log(year); // 2019
+			
+			month = twoHundred.getMonth();
+			console.log(month); // 11
+			
+			date = twoHundred.getDate();
+			console.log(date); // 31
+			
+			document.querySelector('#date200').innerHTML = `${year}년 ${month}월 ${date}일`;
+
+			/////////////////////////////////////////////////////////////////////////////
+
+			// let year = 3; // <- 변수선언
+			// console.log(year);
+			// year = 2; // <- 값의 재할당
+			// console.log(year);   
+
+			cal = toFirst + 365 * (1000*60*60*24);
+			console.log(cal);
+
+			let oneYear = new Date(cal);
+			console.log(oneYear);
+			
+			year = oneYear.getFullYear();
+			console.log(year); // 2019
+			
+			month = oneYear.getMonth();
+			console.log(month); // 11
+			
+			date = oneYear.getDate();
+			console.log(date); // 31
+			
+			document.querySelector('#date365').innerHTML = `${year}년 ${month}월 ${date}일`;
+
+			///////////////////////////////////////////////////////////////
+
+			cal = toFirst + 500 * (1000*60*60*24);
+			console.log(cal);
+
+			let fiveHundred = new Date(cal);
+			console.log(fiveHundred);
+			
+			year = fiveHundred.getFullYear();
+			console.log(year); // 2019
+			
+			month = fiveHundred.getMonth();
+			console.log(month); // 11
+			
+			date = fiveHundred.getDate();
+			console.log(date); // 31
+			
+			document.querySelector('#date500').innerHTML = `${year}년 ${month}월 ${date}일`;
+
+			////////////////////////////////////////////////////////////////////////////////
+
+			// let firstDay = new Date('2019-06-14');
+			// console.log(firstDay); // Fri Jun 14 2019 09:00:00	
+
+			year = firstDay.getFullYear();
+			month = firstDay.getMonth() + 1;
+			date = firstDay.getDate();
+
+			document.querySelector('#firstDate').innerHTML = `${year}년 ${month}월 ${date}일`;
+
         </script>
 	</body>
 	</html>

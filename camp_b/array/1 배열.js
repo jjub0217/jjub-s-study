@@ -34,6 +34,37 @@ console.log(objects[0].age); // 33
 
 // 기존 배열에 새로운 항목을 추가 : 'push'라는 배열 내장함수
 objects.push({
-    name: '멍뭉이'
-})
-console.log(object); // {name: 'james', age: 33}
+    name: 'kim'
+}) // <- object 라는 배열 안에 객체를, push 라는 배열 내장함수를 사용해서 새로 추가삽입.
+
+console.log(objects); // [ {name: 'james', age: 33}, { name: 'jasmin' }, { name: 'kim' } ]
+
+objects.push(35); // <- object 라는 배열 안에 35 라는 number 타입의 값을, push 라는 배열 내장함수를 사용해서 새로 추가삽입. 
+console.log(objects); // [ {name: 'james', age: 33}, { name: 'jasmin' }, { name: 'kim' }, 35 ]
+
+console.log(objects[2]); // {name: 'kim'}
+console.log(objects[2].name); // kim
+
+console.log(objects.length); // 4 
+
+console.log(`objects 라는 객체 내부에는 `);
+for(let i = 0; i < objects.length; i++){
+    console.log(objects[i]);
+}
+console.log(`가 들어있습니다.`);
+
+objects.push([1,2,4,6]);
+console.log(objects);
+/* [ 
+    {name: 'james', age: 33},
+    {name: 'jasmin'},
+    {name: 'kim'},
+    35,
+    [1, 2, 4, 6]
+  ]
+*/
+
+console.log(objects[4][3]); // 6
+objects.push([2, 4, { name: 'kang'}]);
+console.log(objects[5][2].name); // kang
+console.log(objects.length); // 6

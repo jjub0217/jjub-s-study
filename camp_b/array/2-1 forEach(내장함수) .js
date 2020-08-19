@@ -32,7 +32,7 @@ const frontEnd = {
 
 const fastCampus = [ 1, frontEnd, {address: 'seongsu'} ];
 // console.log(fastCampus); 
-/*
+/* 
 [ 
     1, 
     {people: 20, subject: 'javascript', male: 15, female: 5},

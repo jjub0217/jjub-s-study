@@ -7,7 +7,7 @@ console.log(typeof array); // object <- array 가 안나오는 건 버그다.
 console.log(array[3]); // 3
 
 const object = {
-    name:'james',
+    name:'james', 
     age: 33
 }
 

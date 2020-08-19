@@ -4,7 +4,7 @@ const pows = [];
 // 방법1
 // doichang.forEach(function (people) {
 //   pows.push(people + '씨');
-// })
+// }) 
 // console.log(pows);
 
 // // 방법2

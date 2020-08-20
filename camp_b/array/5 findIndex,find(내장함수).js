@@ -6,6 +6,9 @@
 //      - 특정 조건을 확인해서 그 조건이 일치한다면 일치하는 요소가 몇번째인지 알려준다.
 //      - findIndex 내부에 함수를 넣어서 특정값을 특정조건으로 찾아서 그게 
 //        몇번째인지 알려준다. 
+//      - 특정조건에 만족하는 인덱스를 찾으면 거기서 끝난다.
+//        특정조건에 만족하는것이 여러개여도, 제일 처음으로 만족하는 요소를 찾으면 
+//        거기서 끝난다. 
 
 
 
@@ -41,7 +44,7 @@ const todos = [
 
 const index = todos.findIndex(todo => todo.id === 3) // <- findIndex 안에 들어가는 매개변수는 함수가 들어간다.
                                 //  특정 조건을 확인해서 그 조건이 일치한다면 일치하는 요소가 몇번째인지 알려준다.
-console.log(index); // 2 <- 인덱스 2 번째 요소의 id가 2 이다 
+console.log(index); // 2 <- 인덱스 2 번째 요소의 id가 3 이다 
 
 /////////////////////////////////////////////////////////////////
 
@@ -51,7 +54,7 @@ console.log(index); // 2 <- 인덱스 2 번째 요소의 id가 2 이다
 // find 내장함수
 const index2 = todos.find(todo => todo.id === 3);
 console.log(index2); // { id: 3, text: '객체와 배열 배우기', done: true }
-                    // <- id 가 3 요소 전체를 출력해라. (찾은 특정 값 자체를 출력)
+                    // <- id 가 3인 요소 전체를 출력해라. (찾은 특정 값 자체를 출력)
 const index3 = todos.find(todo => todo.done === false);
 console.log(index3); // { id: 4, text: '배열 내장함수 배우기', done: false }
                     // <- done 이라는 프로퍼티의 값이 false 인 요소 전체를 출력해라. 

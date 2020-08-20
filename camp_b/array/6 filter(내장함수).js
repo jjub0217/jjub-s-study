@@ -26,7 +26,8 @@ const todos = [
     }
 ]
 
-// const notDone = todos.filter(todo => todo.done === false); // <- filter 안에 들어가는 매개변수는 함수다.
+// const notDone = todos.filter(todo => todo.done === false); 
+// <- filter 안에 들어가는 매개변수는 함수다.
 const notDone = todos.filter(todo => !todo.done); // <- filter 안에 들어가는 매개변수는 함수다.
 
 // const done = todos.filter(todo => todo.done === true);

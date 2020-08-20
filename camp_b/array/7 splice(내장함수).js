@@ -7,16 +7,16 @@
 
 
 const numbers = [10, 20, 30, 40];
-// const index = numbers.indexOf(30); // <---------------------------------------┐
-// console.log(index); // 2                                                   │
+const index = numbers.indexOf(30); // <---------------------------------------┐
+console.log(index); // 2                                                   │
 // <- 30 이라는 값은 numbers 라는 배열에서 인덱스 2에 있는 요소이다.            │
 //                                                                            │
 //                                                                            │
 // 2번째 요소를 제거한다면? (인덱스가 2 인것을 제거한다면?)                     │
 //                                                                            │
-// numbers.splice(index, 1); // <- 인덱스가 2인 요소부터 요소 1개를 제거해라 ---┤
-// numbers.splice(index, 2); // <- 인덱스가 2인 요소부터 요소 2개를 제거해라 ------┘      
-// console.log(numbers); // [ 10, 20, 40 ]
+numbers.splice(index, 1); // <- 인덱스가 2인 요소부터 요소 1개를 제거해라 ---┤
+numbers.splice(index, 2); // <- 인덱스가 2인 요소부터 요소 2개를 제거해라 ------┘      
+console.log(numbers); // [ 10, 20, 40 ]
 
 numbers.splice(1, 2); // 첫번째 인덱스부터 순서대로 2개의 요소를 제거해라
 console.log(numbers); // [ 10, 40 ]

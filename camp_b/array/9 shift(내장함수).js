@@ -7,6 +7,7 @@
 const numbers = [10, 20, 30, 40];
 
 const value = numbers.shift();
+// const value = numbers.shift(2);// <- shift 안에 그 어떤 값을 넣어도 그 값은 쓰여지지 않는다.
 console.log(value); // 10 <- 배열에서 추출한 첫번째 요소.
 // console.log(numbers); // [20, 30, 40] <- 요소를 추출한 결과로 원본 배열이 변경된다. 
 

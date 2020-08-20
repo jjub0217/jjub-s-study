@@ -44,3 +44,10 @@ fastCampus.forEach(function(fastCam){
   pows.push(fastCam); 
 }) 
 console.log(pows);
+/* 
+[ 
+    1, 
+    {people: 20, subject: 'javascript', male: 15, female: 5},
+    {address: 'seongsu'}
+]
+*/

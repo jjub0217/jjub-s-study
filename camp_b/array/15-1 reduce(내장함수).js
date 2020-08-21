@@ -38,5 +38,31 @@ const average2 = numbers.reduce((acc, cur, index, array) =>
     console.log(average2); // 3
 
 
+////////////////////////////////////////////////////////////////
 
-const alphabets = ['a','a','a','b'] 
+// 각 알파벳들이 배열 안에 몇개씩 있는지 세서, 객체에 결과를 넣어라
+const alphabets = ['a','a','a','b','c','c','d','e'];
+
+const count = alphabets.reduce((acc, cur) => {
+    if(acc[cur]) // <- acc 안에 cur 가 존재하는지 확인
+    // 예시: if(acc['a']) = if(acc.a)가 true 이면
+    {
+        acc[cur] += 1; // <- 값에 1 을 더해라
+    }else { // <- 그렇지 않다면,
+        acc[cur] = 1; // <- acc[cur] 를 1 로 설정할것이다.
+    }
+    return acc;
+}, {})
+// acc : 각 요소들에 대하여 루프 돌려서 어떠한 누적된 값을 연산하는 값
+// cur : 배열안의 각 요소
+// {} : 초기값을 빈 객체로 부여하였다. 
+console.log(count); // { a: 3, b: 1, c: 2, d: 1, e: 1 }
+
+// 초기값 acc : 빈 객체, cur : 'a' => 비어있는 객체에 a 가 있는지 확인을 한다. 
+//                                   비어있는 객체에 a 가 없으니까 객체 안에 a 값을 1 이라고 생성
+// acc : { a: 1} <- acc 라는게 객체를 가리키는 변수가 된다. 
+/* if( acc 에 a 가 존재하면){
+    a: 1 햇던거에 1 을 더한다
+} 
+//  acc: {a: 2}
+*/ 

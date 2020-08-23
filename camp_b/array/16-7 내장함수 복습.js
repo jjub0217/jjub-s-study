@@ -18,3 +18,15 @@ console.log(member2); // ['박나라', '윤슬기']
 const member3 = fds17.slice(1, 2);// <- 배열에서 1번째 인덱스에서 시작해서 
                                   //     2번째 인덱스 이전의 인덱스까지 제거(복사) 
 console.log(member3); // ['임영서']
+ 
+
+//////////////////////////////////////////////////////////
+
+const bugs = ['문규', '석규', '영찬', '세진', '태헌', '태근','주익','재희'];
+const myBoyFriend = bugs.indexOf('세진');
+
+console.log(myBoyFriend); // 3
+
+const bestBoyFriend = bugs.slice(3,4);
+
+console.log(bestBoyFriend); // ['세진']

@@ -1,0 +1,168 @@
+  <!doctype html>
+  <html>
+
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width">
+      <title>To do list</title>
+      <style>
+          * {
+              box-sizing: border-box;
+          }
+
+          #wrapper {
+              width: 600px;
+              margin: 0 auto;
+          }
+
+          h2 {
+              text-align: center;
+          }
+
+          form {
+              background-color: #007acc;
+              padding: 30px 40px;
+              color: white;
+              text-align: center;
+          }
+
+          input {
+              border: none;
+              width: 440px;
+              padding: 10px;
+              float: left;
+              font-size: 16px;
+          }
+
+          .addBtn {
+              padding: 10px;
+              width: 50px;
+              border: none;
+              background-color: #fff;
+              box-shadow: 1px 2px 4px #167dae;
+              color: #555;
+              text-align: center;
+              font-size: 14px;
+              cursor: pointer;
+              transition: 0.3;
+          }
+
+          form::after {
+              content: "";
+              display: table;
+              clear: both;
+          }
+          form::after {
+  content:"";
+  display:table;
+  clear:both;
+}
+ul{
+  margin:0;
+  padding:0;
+  list-style: none;
+}
+ul li{
+  cursor:pointer;
+  position:relative;
+  padding:12px 8px 12px 40px;
+  background: #eee;
+  font-size:18px;
+  transition: 0.2s;
+}
+ul li:nth-child(odd) {
+  background-color:#f9f9f9;
+}
+ul li:hover {
+  background-color:#ddd;
+}
+.close {
+  position:absolute;
+  right:0;
+  top:0;
+  padding:12px 16px;
+  border:none;
+  background:rgba(255,255,255,0)
+}
+.close:hover {
+  background-color:#007acc;
+  color:white;
+}
+      </style>
+  </head>
+
+  <body>
+      <div id="wrapper">
+          <h2>여행 준비물 점검 목록</h2>
+          <form action=".">
+              <input type="text" id="item" autocapitalize="true">
+              <button type="button" id="add" class="addBtn">추가</button>
+          </form>
+          <div class="itemList"></div>
+          <!--준비물이 표시될 영역-->
+      </div>
+
+      <script>
+          // 추가버튼을 눌렀을때 input 창 값을 배열에 추가해야 한다. 
+            let itemList = []; // <- 초기 배열값: 빈 배열(배열을 이제 채워넣어야 하니까.)
+            let $itemList = document.querySelector('.itemList');
+            // console.log(list);
+          const $addBtn = document.querySelector('#add');
+          // let $item = document.querySelector('#item').value;// ─────┐
+          //                                                           │<── input 창의 값 ───┐           
+          // const $item = document.querySelector('#item').value;// ───┘                     │ 함수 밖에 선언하고, 함수 안에 선언 안하면
+          //                                                                                 │ 인터프리터에 의해서, 함수 밖에서 빈 배열인 상태로 유지한 상태로               
+          console.log(itemList); // []                                                       │ 이벤트가 등록이 되기 때문에 값을 아무리 넣어도 빈 문자열이 들어오게 된다. 
+          //                                                                                         │ 함수 밖에 선언할거면, 함수 안에서 프로퍼티 값을 갱신 해야 해서  
+          //                                                                                 │ 함수 안에서도 또 선언을 해야 하는데, ──────────┐
+          $addBtn.onclick =
+          function () { //                                                    │ 처음부터 함수 안에서 선언을 하면 갱신 할 필요도 │ 없고 배열이 채워진 상태로
+              const $item = document.querySelector('#item')
+              .value; // <- input 창의 값 ───────┘ 유지한 상태로 이벤트가 등록이 된다.             │
+              // $item = document.querySelector('#item').value; <─────────────────────────────────────────────────────────────────────────────┘
+              if ($item != null) { // <- input 창의 값이 없는게 아니라면
+                  itemList.push($item) // <- 빈 배열에 input 창의 값을 넣어라
+                  // console.log(itemList);
+                  document.querySelector('#item').value = ""; // <- 입력한 input 창에 남아있는 값 지움
+                  document.querySelector('#item').focus(); // <- 동시에 input 창에 포커스 가게 함
+              }
+            //   console.log(itemList.length);
+        //  for(let i = 0; i < itemList.length; i++){
+        //  list.innerHTML = `<ul><li>${itemList[i]}</li></ul>`; 
+        //  document.write('<ul><li>itemList[i]</li></ul>');
+        //  console.log(itemList[i]);
+        //   }
+        showList();
+          }
+
+          function showList(){
+            let list = '<ul>'
+            for(let i = 0; i < itemList.length; i++){
+                // list.innerHTML = `<ul><li>${itemList[i]}</li></ul>`;
+                
+                list+= `<li>${itemList[i]}<span class="close" id="${i}">X</span></li>`; 
+                // list+= `<li>${itemList[i]}</li>`; 
+                // document.write('<ul><li>itemList[i]</li></ul>');
+                // console.log(itemList[i]);
+          }
+            list += '</ul>';
+            $itemList.innerHTML = list;
+
+            let remove = document.querySelectorAll('.close');
+            // console.log(typeof remove); // <- object(array)
+            for(let i = 0; i < remove.length; i++){
+                remove[i].onclick = function removeList(){
+                    // console.log(this); // <- x 를 누른 li 의 인덱스의 x를 반환
+                    let id = this.getAttribute('id');
+                    console.log(id); // <- x 를 누른 li의 인덱스를 반환
+                    itemList.splice(id, 1);//<- 인덱스 값이 id 인 요소 1개 삭제
+                    showList();
+                }
+            }
+        }
+
+
+      </script>
+  </body>
+
+  </html>

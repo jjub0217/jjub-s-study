@@ -1,0 +1,42 @@
+  <!DOCTYPE html>
+  <html lang="ko">
+
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>함수</title>
+      <style>
+          button {
+              border: 1px solid #ccc;
+              padding: 10px 15px;
+              margin: 20px auto;
+              font-size: 16px;
+          }
+
+          body {
+              text-align: center;
+          }
+      </style>
+      <!-- <link rel="stylesheet" href="css/add.css"> -->
+  </head>
+
+  <body>
+      <button>덧셈 계산하기</button>
+      <script>
+          let $button = document.querySelector('button');
+
+
+
+          $button.onclick = function() {
+              let num1 = +prompt('첫번째 숫자를 입력하시오');
+              let num2 = +prompt('두번째 숫자를 입력하시오');
+              let sum = num1 + num2;
+              alert(sum);
+            }
+            </script>
+
+
+  </body>
+
+  </html>

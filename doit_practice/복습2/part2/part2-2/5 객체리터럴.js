@@ -1,18 +1,55 @@
-/* 프로토타입
-        - 어떠한 결과물을 민들기 위한 기본 틀
-        - Image() Image객체 , document() Document객체 , Date() Date객체.. 
-        이런것들을 프로토타입이라고 한다.
-        - 예시 : 붕어빵 틀
-        */
+/* 객체를 생성하는 방법
+        ┌-----> 1. 객체 리터럴
+        │       2. 생성자 함수
+        │       3. Object 생성자함수
+        │       4. Object.creat 메서드
+        │       5. 클래스
+        │                                */
+// 객체 리터럴
+const object = {
+        name: '강주현',
+        age: 33,
+        sayHi(){
+                console.log('Hello');
+        }
+}
+// { name: '강주현', age: 33 } <- 객체 리러럴
+// name , age <- 프로퍼티 키
+// '강주현' , 33 <- 프로퍼티 값 
+// sayHi(){ console.log('Hello'); } <- 메서드
 
+const book ={ 
+        title: '자바스크립트',
+        author: '홍길동',
+        page: 500,
+        price: 15000,
+        info: function(){
+                console.log(`${this.title} 책의 분량은 ${this.page}쪽입니다.`)
+        }
+}
+book.info(); // 자바스크립트 책의 분량은 500쪽입니다.
 
-/* 인스턴스
-        - 프로토타입(어떠한 결과물을 만들기 위한 기본틀)을 사용해서 
-          만들어내는 결과물(객체)
-        - 새 인스턴스를 생성할때, New 연산자와 프로토타입을 사용해서 인스턴스를 만든다.
-        - 프로토타입을 사용행서 인스턴스를 만들때 New 연산자를 사용해야 한다.
-        - 예시 : 붕어빵*/
-        var now = new Date(); // <- new 연산자와, Date객체를 사용해서 
-                              // 만든 결과물을 now 라는 변수에 할당한것이다. 
-        // 이제 now 는 변수이면서 인스턴스이다. 
-        console.log(now); // 2020-08-30T05:10:37.203Z
+book.field = "IT"
+console.log(book.field);
+// IT
+console.log(book);
+/*{
+        title: '자바스크립트',
+        author: '홍길동',
+        page: 500,
+        price: 15000,
+        info: [Function: info],
+        field: 'IT'
+      }
+*/
+delete book.page;
+console.log(book);
+/*
+{
+  title: '자바스크립트',
+  author: '홍길동',
+  price: 15000,
+  info: [Function: info],
+  field: 'IT'
+}
+*/

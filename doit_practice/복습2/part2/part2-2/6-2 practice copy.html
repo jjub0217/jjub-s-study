@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>패스트캠퍼스 스쿨 살펴보기</title>
+    <style>
+        /* body {
+            background: url('../images/bg.png') repeat-x top left;
+        } */
+
+        h1 {
+            margin-top: 100px;
+        }
+
+        p {
+            width: 400px;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+       function FastCam(subject, number, member, male, female, avAge ){
+            this.subject = subject,
+            this.number = number,
+            this.member = member,
+            this.male = male,
+            this.female = female,
+            this.avAge = avAge
+       }
+
+       let fds16 = new FastCam ('프론트엔드', 16, 15, 10, 5, 25);
+       let fds17 = new FastCam ('프론트엔드', 17, 20, 15, 5, 23);
+       let bks2 = new FastCam ('백엔드', 2, 10, 8, 2, 27);
+
+       let shool = [fds16, fds17, bks2]
+
+       document.write('<h1>스쿨 이름으로 살펴보기</h1>')
+       for(let i = 0; i < shool.length; i++){
+            document.write(`<p>${shool[i].subject} ${shool[i].number}기</p>`)
+       }
+
+       document.write('<h1> 인원수로 살펴보기</h1>')
+       for(let i = 0; i < shool.length; i++){
+            document.write(`<p>${shool[i].member}명</p>`)
+       }
+
+       document.write('<h1> 남성의 명수로 살펴보기</h1>')
+       for(let i = 0; i < shool.length; i++){
+            document.write(`<p>${shool[i].male}명</p>`)
+       }
+    
+
+       document.write('<h1> 여성의 명수로 살펴보기</h1>')
+       for(let i = 0; i < shool.length; i++){
+            document.write(`<p>${shool[i].female}명</p>`)
+       }
+
+       document.write('<h1> 평균 나이로 살펴보기</h1>')
+       for(let i = 0; i < shool.length; i++){
+            document.write(`<p>${shool[i].avAge}세</p>`)
+       }
+
+    </script>
+</body>
+
+</html>

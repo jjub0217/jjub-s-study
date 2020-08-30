@@ -7,9 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>도서 관리 프로그램 - 객체 만들기</title>
     <style>
-        body {
+        /* body {
             background: url('../images/bg.png') repeat-x top left;
-        }
+        } */
 
         h1 {
             margin-top: 180px;
@@ -26,9 +26,54 @@
 
 <body>
     <script>
-        function Book(){
-            
+        function Book(title, author, volume, price) {
+                this.title = title,
+                this.author = author,
+                this.volume = volume,
+                this.price = price
         }
+
+        let html = new Book('웹 표준의 정석', 'Ko', 608, '28,000');
+        // html 이란 인스턴스(객체)가 만들어졌다. 
+        // <- html 이란 인스턴스 안에는 Book 이란 객체가 들어가있다. 
+        console.log(html);
+        /*  Book {title: "웹 표준의 정석", author: "Ko", volume: 608, price: "28,000"}  */
+
+
+        let youtube = new Book('유투브 영상 만들기', 'Kim', 368, '16,000');
+        // youtube 이란 인스턴스(객체)가 만들어졌다. 
+        // <- youtube 이란 인스턴스 안에는 Book 이란 객체가 들어가있다. 
+        console.log(youtube);
+        /*  Book {title: "유투브 영상 만들기", author: "Kim", volume: 368, price: "16,000"}  */
+
+
+        let python = new Book('점프 투 파이썬', 'Park', 352, '18,800');
+        // python 이란 인스턴스(객체)가 만들어졌다. 
+        // <- python 이란 인스턴스 안에는 Book 이란 객체가 들어가있다. 
+        console.log(python);
+        /*  Book {title: "점프 투 파이썬", author: "Park", volume: 352, price: "18,800"}  */
+
+
+
+
+        let bookList = [html, youtube, python];
+        console.log(bookList); // [Book, Book, Book]
+        console.log(typeof bookList); // object (array)
+
+
+        document.write('<h1>책 제목으로 살펴보기</h1>')
+        for(let i = 0 ; i < bookList.length; i++){
+            document.write(`<p> ${bookList[i].title} </p>`)
+        }
+        
+        document.write('<h1>책 가격으로 살펴보기</h1>')
+        for(let i = 0 ; i < bookList.length; i++){
+            document.write(`<p> ${bookList[i].price} </p>`)
+        }
+
+        
+
+
     </script>
 </body>
 

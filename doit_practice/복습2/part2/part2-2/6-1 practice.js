@@ -15,14 +15,13 @@
 //     console.log(`당신은 ${this.subject} ${this.number}기, 평균나이 ${this.avAge}세에 속해있습니다. `);
 // } <- sen 이란 함수 입장에서는 여기서 이렇게 함수를 선언하면 this 가 뭔지 모르기때문에 이 함수는 실행이 되지 않는다. 
 
-function FastCam (subject, number, member, male, female, avAge){
-    this.subject = subject,
-    this.number = number,
-    this.member = member,
+function FastCam (title, num, mem, male, female, avAge){
+    this.subject = title,
+    this.number = num,
+    this.member = mem,
     this.male = male,
     this.female = female,
     this.avAge = avAge,
-    // this.sentence = sen <- 실행안되는 코드다. 
     this.sentence = function(){
             console.log(`당신은 ${this.subject} ${this.number}기, 평균나이 ${this.avAge}세에 속해있습니다. `);
         }
@@ -31,7 +30,7 @@ function FastCam (subject, number, member, male, female, avAge){
 
 const fds16 = new FastCam('프론트엔드', 16, 15, 9, 6, 23)
 const fds17 = new FastCam('프론트엔드', 17, 20, 15, 5, 25);
-const bks2 = new FastCam('백엔드', 2, 10, 8, 2, 26)
+const bks2 = new FastCam('IOS스쿨', 2, 10, 8, 2, 26)
 
 console.log(fds16);
 fds16.sentence();

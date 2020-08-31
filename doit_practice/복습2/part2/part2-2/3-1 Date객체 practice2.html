@@ -115,23 +115,120 @@
 		</div>
 	</div>
 	<script>
-		let now = new Date() // <- 현재 날짜와 시간 정보 가져오는 getter 함수
+		let now = new Date() // <- 오늘 날짜와 시간 정보 가져오는 getter 함수
 		console.log(now); // Mon Aug 31 2020 15:59:59 GMT+0900 (대한민국 표준시)
+		let now2 = now.getTime() // <- 오늘 날짜를 밀리초로 바꾸기
+		console.log(now2);// 1598865470616 <- 오늘 날짜의 밀리초
 
-		let $date = now.getDate(); // <- 현재 '일'을 가져오는 getter 함수
-		console.log($date); // 31(일) <- 현재 '일'
+//---------------------------------------------------------------------------------------
 
-		let $day = now.getDay();// <- 현재 '요일'을 가져오는 getter 함수 
-		console.log($day); // 1 <- 월요일
+		let firstDay = new Date('2019-06-14');// <- 처음 만난날
+		console.log(firstDay); // Fri Jun 14 2019 09:00:00 GMT+0900 (대한민국 표준시)
+		let firstDay2 = firstDay.getTime()// <- 처음 만난날을 밀리초로 바꾸기
+		console.log(firstDay2); // 1560470400000
+//--------------------------------------------------------------------------------	
 
-		let $time = now.getTime();
-		console.log($time);// 1598857478370 <- 1970년 1월1일로부터 현재까지 흐른 밀리초
+		let passedTime = now - firstDay; // <- 지난 날 차이 값
+		console.log(passedTime);// 38395213653
+//---------------------------------------------------------------------------------
 
-		let passed50date = $date + 50;
-		console.log(passed50date); // 81 <- 오늘부터 50일이 지난 일수 
+		//결과값(밀리초)를 날짜수로 바꾸기 
+		let result = passedTime/86400000
+		console.log(result);
 
-		let gf = now.setDate();
-		console.log(gf);
+		// 소수점 이하 버리는 함수 Math.round 함수 사용하기		
+		let sum = Math.round(result)
+		console.log(sum); // 444
+//------------------------------------------------------------------------------------
+
+		// 처음 만난날 부터 현재까지 만난 일수 구하기
+		let $passed = document.querySelector('#accent');
+		$passed.innerHTML = `${sum}일`; // 444일
+
+//--------------------------------------------------------------------------------------
+
+		// 100일째 되는 날을 날짜수로 바꿔라
+//		    밀리초를 말함 <┐________
+		// let hundred = (firstDay2 + 100) // <- 100일째 되는 날을 날짜수로 바꿈
+//									 ￣￣￣└> 100 은 일수를 말함
+		// let trans = 100*86400000;
+		// let hundred = firstDay2 + trans;	
+		let hundred = firstDay2 + (100*86400000);	
+		console.log(hundred); // 1569110400000
+
+		// 200일째 되는 날을 날짜수로 바꿔라
+		// let twoHundred = firstDay2 + (2*trans);
+		let twoHundred = firstDay2 + (200*86400000);
+		console.log(twoHundred); // 1577750400000
+
+		// 1년째 되는 날을 날짜수로 바꿔라 
+		let oneYear = firstDay2 + (365*86400000);
+		console.log(oneYear);
+
+		// 500일째 되는 날을 날짜수로 바꿔라
+		let fiveHundred = firstDay2 + (500*86400000)
+		console.log(fiveHundred);
+
+
+//-------------------------------------------------------------------------------------------
+
+		// 100일째 되는 날을 밀리초로 가져온 hundred 을 Date객체의 인스턴스 (제대로된 날짜의 형태)를 만들어라. 
+		let passed100 = new Date(hundred);
+		console.log(passed100);
+
+		// 제대로된 날짜의 형태에서 '연도'만 가져와라. 
+		let year = passed100.getFullYear();
+		console.log(year);		
+		// 제대로된 날짜의 형태에서 '월'만 가져와라.
+		let month = passed100.getMonth()+1;
+		console.log(month);
+		// 제대로된 날짜의 형태에서 '일'만 가져와라.
+		let date = passed100.getDate();
+		console.log(date);
+
+		let $passed100 = document.querySelector('#date100');
+		$passed100.innerHTML = `${year}년 ${month}월 ${date}일`
+
+//----------------------------------------------------------------------------------------------		
+
+		// 200일째 되는 날을 밀리초로 가져온 twoHundred 을 Date객체의 인스턴스(제대로된 날짜의 형태)를 만들어라
+		let passed200 = new Date(twoHundred);
+		console.log(passed200);
+
+		year = passed200.getFullYear(); // 위에서 선언한 year 와 변수이름은 같지만 다른 메모리 공간에 재할당 한것이다. 
+		month = passed200.getMonth();
+		date = passed200.getDate();
+		
+		let $passed200 = document.querySelector('#date200');
+		$passed200.innerHTML = `${year}년 ${month}월 ${date}일`
+
+//----------------------------------------------------------------------------------------------------		
+
+		//1년째 되는 날을 밀리초로 가져온 oneYear을 Date객체의 인스턴스(제대로된 날짜의 형태)를 만들어라
+		let passed365 = new Date(oneYear);
+		console.log(passed365);
+
+		year = passed365.getFullYear(); // 위에서 선언한 year 와 변수이름은 같지만 다른 메모리 공간에 재할당 한것이다. 
+		month = passed365.getMonth();
+		date = passed365.getDate();
+		
+		let $passed365 = document.querySelector('#date365');
+		$passed365.innerHTML = `${year}년 ${month}월 ${date}일`
+
+//------------------------------------------------------------------------------------------------------
+
+		// 500일째 되는 날을 밀리초로 가져온 fiveHundred 를 Date객체의 인스턴스(제대로된 날짜의 형태)를 만들어라
+		let passed500 = new Date(fiveHundred);
+		console.log(fiveHundred);
+
+		
+		year = passed500.getFullYear(); // 위에서 선언한 year 와 변수이름은 같지만 다른 메모리 공간에 재할당 한것이다. 
+		month = passed500.getMonth();
+		date = passed500.getDate();
+		
+		let $passed500 = document.querySelector('#date500');
+		$passed500.innerHTML = `${year}년 ${month}월 ${date}일`
+
 	</script>
 </body>
 

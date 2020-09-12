@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>함수</title>
+	<style>
+		button {
+			border: 1px solid #ccc;
+			padding: 10px 15px;
+			margin: 20px auto;
+			font-size: 16px;
+		}
+
+		body {
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body>
+	<button>덧셈 계산하기</button>
+	<script>
+		const $button = document.querySelector('button');
+		let first = true;
+		let sum = 0;
+		$button.onclick = function () {
+			if (first === true){
+				const num1 = +prompt('숫자를 입력하세요');
+				const num2 = +prompt('숫자를 입력하세요');
+				sum = num1 + num2;
+			}
+			if(first === false) {
+			console.log(sum);
+			alert(sum)
+			}
+			first = !first;
+		};
+
+
+
+	</script>
+</body>
+
+</html>

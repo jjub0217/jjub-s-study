@@ -30,12 +30,14 @@ const print2 = 'dog' || 'cat'
 
 // function getName(animal) {
 //     // animal 값이 존재할때에만 반환값을 반환해라
-
+       
+        // 방법1
 //     //  if(animal) {
 //     //      return animal.name;
 //     //  }
 //     //  return undefined
 
+        // 방법2
 //     return animal && animal.name
 // }
 

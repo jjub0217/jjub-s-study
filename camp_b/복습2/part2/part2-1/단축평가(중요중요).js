@@ -22,7 +22,7 @@ const result4 = false || true
 
 const print2 = 'dog' || 'cat'
 // console.log(print2);  // 'dog'
-
+ 
 // ----------------------------------------
 // const dog = {
 //     name: '멍멍'

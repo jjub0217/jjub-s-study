@@ -1,21 +1,29 @@
-/* 블록 레벨 스코프
-        - 블록 레벨 변수 : 
-            변수를 선언한 블록 내부에서만 변수의 생명이 살아 있고, 
-            블록을 벗어나면 죽어서 무효화 되는 범위 내의 변수
-            ( 블록 내부에서 let 키워드를 사용하여 선언한 변수 )
+/* 스코프
+        - 변수나 함수를 선언할때 어디서 어디까지 유효한지 범위를 뜻한다.
+        1. 전역 변수(Global 변수)
+            - 코드의 모든 범위에서 사용이 가능한 변수
+        2. 함수 변수
+            - 특정 함수 내부에서만 사용이 가능한 변수
+        3. 블록 레벨 변수
+            - 코드 블록 내에서만 사용이 가능한 변수
 */
 
-function add(a, b) {
-    let boyFriend1 = '세진'
-    if(a){
-        let boyFriend2 = '요섭'
-        console.log(`내 남자친구 이름은 ${boyFriend2}입니다`); 
-        // 내 남자 친구 이름은 요섭입니다.
-    }
-    console.log(`내 남자친구 이름은 ${boyFriend1}입니다`);
-    // 내 남자친구 이름은 세진입니다
-    console.log(`내 남자친구 이름은 ${boyFriend2}입니다`); // Reference Error
-    // <- boyFriend2 는 블록 레벨 변수이기 때문에 if 문의 블록문 바깥에서는
-    //    참조가 불가능하다. 
+const value = 'hello'; // <- 전역 변수(Global 변수) : 다른 곳 어디에서든 사용할수 있다. 
+
+function myFunction(){
+    console.log('myFunction: ');
+    console.log(value); // <- 전역 변수 
 }
-add(1, 2);
+
+function otherFunction(){
+    console.log('otherFunction: ');
+    const value = 'bye!' // <- 함수 내부에서만 유효한 변수이다. (전역 변수에 영향을 주지 않는다)
+    console.log(value);
+}
+
+myFunction();
+otherFunction();
+
+console.log('global scope: ');
+console.log(value);
+

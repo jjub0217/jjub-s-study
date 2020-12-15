@@ -40,4 +40,4 @@
             //                                           └──────┘       hello.bind(anna) 의 결과물은 함수다.             
 
             helloMark();            
-            helloAnna(); */
+            helloAnna(); */ 

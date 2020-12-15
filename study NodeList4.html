@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="2pm">
+        <li class="penPen">JunHo</li>
+        <li class="okCat">TeacYeon</li>
+        <li class="chanNana">ChanSung</li>
+    </ul>
+    <script>
+        const $2pm = document.getElementById('2pm');
+        
+        
+        console.log($2pm.childNodes) // NodeList(7) [ text, li.penPen, text, li.okCat, text, li.chanNana]
+        console.log($2pm.children); //  NodeList(3) [ li.penPen, li.okCat, li.chanNana]
+        console.log($2pm.firstChild); // #text
+        console.log($2pm.firstElementChild); // <li class="penPen">JunHo</li>
+        console.log($2pm.lastChild); // #text
+        console.log($2pm.lastElementChild); // <li class="chanNana">chanSung</li>
+        
+        const {firstChild} = $2pm
+        console.log(firstChild); // #text
+        
+        const { nextSibling } = firstChild
+        console.log(nextSibling); // <li class="penPen">JunHo</li>
+        
+        const { previousSibling } = nextSibling;
+        console.log(previousSibling); // #text
+        
+        const $child = document.getElementsByClassName('penPen');
+        console.log($child); // HTMLCollection [ li.penPen ]
+        console.log($child.parentNode); // undefined 
+        // └> 왜냐면, child는 HTMLCollection 이라는 객체인데, 그 객체의 부모노드를 찾으라고
+        //    하는거니까, undefined 가 나온다. 굳이 child의 부모노드를 찾으려면
+        //    $child라는 유사배열객체의 0번째 인덱스에 담긴 penPen 요소를 인덱스로 
+        //    꺼내오고, 거기에 parentNode를 참조해야 나온다.
+        console.log($child[0].parentNode); // <ul id="2pm"> </ul>
+        
+        console.log($2pm.childNodes) // NodeList(7) [ text, li.penPen, text, li.okCat, text, li.chanNana]
+        console.log($2pm.nodeValue); // null <- 왜냐면, 요소노드나 문서노드로 접근했기 때문이다.
+        // └> 해결방법 ┐
+        console.log(nextSibling.firstChild); // "junHo"
+        console.log(nextSibling.firstChild.nodeValue); // junHo
+        nextSibling.firstChild.nodeValue = 'jun.k'; 
+
+
+</script>
+</body>
+
+</html>

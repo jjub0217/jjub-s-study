@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .me {
+            list-style: square;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="subject">
+        <li id="array" class="me" data-subject-name="array" , data-subject-role="enumerable">배열 공부하기</li>
+        <li id="event" class="me" data-subject-name="event">이벤트 공부하기</li>
+        <li id="des" class="me" data-subject-name="destructuring">디스트럭처링 공부하기</li>
+    </ul>
+    <input id="user" type="text" value="주현이의 공부">
+    <script>
+        const $ul = document.querySelector('.subject');
+
+        const $liObject = $ul.children; // HTMLCollection(3)
+        const $liArray = [...$liObject];
+        console.log($liArray); // [li#array.me, li#event.me, li#des.me]
+
+        const $li = $liArray.find($li => $li.dataset.subjectName === 'array');
+        console.log($li.dataset.subjectRole); // enumerable
+
+
+        const $input = document.querySelector('input');
+        console.log($input.style); // 객체 ( CSSStyleDeclaration ) 
+
+        $input.style.border = '3px dashed';
+        $input.style.width = '200px';
+        $input.style.height = '60px';
+        $input.style.fontSize = '30px';
+        $input.style.color = 'purple';
+
+
+        const $firstLi = document.querySelector('.me');
+        console.log($firstLi.className); // me
+
+        $firstLi.className = $firstLi.className.replace('me', 'you')
+        console.log([...$ul.children]); // [li#array.you, li#event.me, li#des.me]
+
+        console.log($firstLi.classList) // DOMTokenList [ "you", value: "you" ]
+    </script>
+</body>
+
+</html>

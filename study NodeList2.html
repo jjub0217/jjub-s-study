@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="2pm">Hello <span>JunHo!</span></div>
+    <script>
+        console.log(document.getElementById('2pm').firstChild); //  "Hello"
+        console.log(document.getElementById('2pm').firstChild.nodeValue); //  Hello
+        console.log(document.getElementById('2pm').lastChild); // <span>JunHo!</span>
+        console.log(document.getElementById('2pm').lastChild.firstChild); // "JunHo!"
+        
+        const $2pm = document.getElementById('2pm')
+        console.log($2pm); // <div id="2pm">Hello <span>JunHo!</span></div>
+        console.log($2pm.childNodes); // NodeList(2) [text, span]
+        console.log($2pm.childNodes[0].textContent); // Hello
+
+        console.log($2pm.textContent); // Hello JunHo!
+
+        console.log($2pm.innerHTML); // Hello <span>JunHo!</span>
+
+
+
+
+
+    </script>
+</body>
+
+</html>

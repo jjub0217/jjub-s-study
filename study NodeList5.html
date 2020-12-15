@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        .red {
+            color: red;
+        }
+
+        .blue {
+            color: blue;
+        }
+    </style>
+    <ul id="fruits">
+        <li class="red">Apple</li>
+        <li class="red">Banana</li>
+        <li class="red">Orange</li>
+    </ul>
+    <script>
+        // NodeList
+        const $elems = document.querySelectorAll('.red');
+
+        console.log($elems); // NodeList(3) [ li.red, li.red, li.red]
+        console.log(typeof $elems); // object
+        console.log(HTMLCollection.hasOwnProperty('length')); // true
+        console.log($elems.hasOwnProperty('length')); // false
+        // $elems 는 length 프로퍼티를 가지고 있지 않지만, 부보객체인 HTMLCollection 이 소유하고 있는 
+        // length 프로퍼티를 상속받아서, 자기것처럼 사용할수 있다. 
+
+        console.log(Array.isArray($elems)) // false  <------┬-- 유사배열 객체
+        console.log($elems instanceof Array); // false  <---┘
+
+        console.log(Object.getPrototypeOf($elems)); // NodeList  
+
+
+        console.log($elems.length); // 3
+        console.log($elems[1]); // <li class="blue">banana</li>
+
+
+
+        const $parentNode = document.getElementById('fruits')
+        console.log($parentNode); 
+        /*// └>   <ul id="fruits">
+                        <li class="red">Apple</li>
+                        <li class="red">Banana</li>
+                        <li class="red">Orange</li>
+                    </ul>
+        */
+        const { childNodes } = $parentNode;
+        console.log(childNodes); // NodeList(7) [text, li.red, text, li.red, text, li.red, text]
+        console.log(childNodes instanceof NodeList); // true
+        console.log(childNodes.length); // 7
+
+
+</script>
+</body>
+
+</html>

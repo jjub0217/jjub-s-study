@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        .red {
+            color: red;
+        }
+
+        .blue {
+            color: blue;
+        }
+    </style>
+    <ul id="fruits">
+        <li class="apple">Apple</li>
+        <li class="banana">Banana</li>
+        <li class="orange">Orange</li>
+    </ul>
+    <script>
+        // NodeList
+
+        const $parentNode = document.getElementById('fruits')
+        console.log($parentNode); 
+        /*// └>   <ul id="fruits">
+                        <li class="red">Apple</li>
+                        <li class="red">Banana</li>
+                        <li class="red">Orange</li>
+                    </ul>
+        */
+        
+        const $banana = document.getElementsByClassName('banana')
+        console.log($banana);
+        // const { childNode} = $banana
+        // console.log(childNode); // undefined 
+
+        
+
+
+
+</script>
+</body>
+
+</html>

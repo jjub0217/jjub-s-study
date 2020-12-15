@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li id="array" class="me">배열 공부하기</li>
+         <li id="event" class="me">이벤트 공부하기</li>
+        <li id="dis" class="me">디스트럭처링 공부하기</li>
+    </ul>
+    <script>
+        const { attributes } = document.getElementById('array');
+        console.log(attributes); // NamedNodeMap 
+
+        // const {id} = attributes; // <- attributes = NamedNodeMap 객체
+        // └ id : NamedNodeMAp 객체의 프로퍼티들 중에 하나.
+        // console.log(id); // id="array" 
+        
+        const id = attributes.id.value;
+        console.log(id); // array
+        const $class = attributes.class.value;
+        console.log($class); // me
+        const $length = attributes.length;
+        console.log($length); // 2
+
+
+</script>
+</body>
+
+</html>

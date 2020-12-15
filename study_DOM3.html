@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul class="subject">
+        <li id="array" class="me">배열 공부하기</li>
+        <li id="event" class="me">이벤트 공부하기</li>
+        <li id="dis" class="me">디스트럭처링 공부하기</li>
+    </ul>
+    <input id="user" type="text" value="주현이의 공부" >
+    <script>
+        const $input = document.getElementById('user');
+        const $ul = document.querySelector('.subject');
+        console.log($ul); // ul 전체
+
+        console.log($ul.children); // 유사배열ㄸ객체 ( HTMLCollection)
+        /* // └> HTMLCollection [ li#array.me, li#event.me, li#dis.me,
+                                    array, event, dis ]             */
+
+        $input.oninput = () => {
+            console.log('value 프로퍼티 키의 값' , $input.value);
+        }
+
+        console.log('value 어트리뷰트의 값(value 라는 html 속성의 값)', $input.getAttribute('value'));
+
+        $input.value = '남자친구'
+    </script>
+</body>
+
+</html>

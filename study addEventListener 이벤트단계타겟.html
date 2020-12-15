@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <style>
+        #fruits {
+            background-color: red;
+        }
+
+        #fruits > li {
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <ul id="fruits">
+        <li id="apple">Apple</li>
+        <li id="banana">Banana</li>
+        <li id="orange">orange</li>
+    </ul>
+
+    <script>
+        const $ul = document.getElementById('fruits');
+        const $banana = document.getElementById('banana');
+
+        $ul.addEventListener('click', e => {
+            console.log(`이벤트 단계: ${e.eventPhase}`); // 이벤트 단계 3 
+            console.log(`이벤트 타깃: ${e.target}`); // 이벤트 타깃 [object HTMLLIElement]
+            console.log(`커런트 타깃: ${e.currentTarget}`); // 커런트 타깃 [object HTMLLIElement]
+        });
+
+        $banana.addEventListener('click', e => {
+            console.log(`이벤트 단계: ${e.eventPhase}`); // 이벤트 단계 2
+            console.log(`이벤트 타깃: ${e.target}`); // 이벤트 타깃 [object HTMLLIElement]
+            console.log(`커런트 타깃: ${e.currentTarget}`); // 커런트 타깃 이벤트 타깃 [object HTMLLIElement]
+        });
+
+        $ul.addEventListener('click', e => {
+            console.log(`이벤트 단계: ${e.eventPhase}`); // 이벤트 단계 3
+            console.log(`이벤트 타깃: ${e.target}`); // 이벤트 타깃 [object HTMLLIElement]
+            console.log(`커런트 타깃: ${e.currentTarget}`); // 이벤트 타깃 [object HTMLLIElement]
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li id="array" class="me">배열 공부하기</li>
+         <li id="event" class="me">이벤트 공부하기</li>
+        <li id="dis" class="me">디스트럭처링 공부하기</li>
+    </ul>
+    <script>
+        const { attributes } = document.getElementById('array');
+        console.log(attributes); // NamedNodeMap 
+
+        const $li = document.getElementById('array');
+        console.log($li); // <li id ="array" class="me">...<li>       
+
+//--------------------------------------------------------------------
+
+        // id 라는 프로퍼티를 취득
+        // 1. 첫번째 방법
+        const id1 = attributes.id.value;
+        console.log(id1); // array
+
+        // 2. 두번째 방법 (getAttribute 메서드 사용)
+        const id2 = $li.getAttribute('id');
+        console.log(id2); // array
+        
+        
+        // id 라는 프로퍼티의 값을 변경
+        const idChange = $li.setAttribute('id', 'arrays');
+        const changeResult = $li.getAttribute('id');
+        console.log(changeResult); // arrays
+
+
+
+        
+        // class 라는 프로퍼티를 취득
+        // 1. 첫번째 방법
+        const $class1 = attributes.class.value;
+        console.log($class1); // me
+
+        // 2. 두번째 방법(getAttribute 메서드 사용)
+        const $class2 = $li.getAttribute('class');
+        console.log($class2); // me
+
+        
+        // class 라는 프로퍼티 변경
+        const classChange = $li.setAttribute('class', 'you');
+        const changeClassResult = $li.getAttribute('class')
+        console.log(changeClassResult); // you
+
+
+
+
+        // length 라는 프로퍼티 취득
+        const $length = attributes.length;
+        console.log($length); // 2
+
+        
+        
+
+</script>
+</body>
+
+</html>

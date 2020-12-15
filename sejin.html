@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            /* background-color: red; */
+            margin: 0;
+        }
+
+        .container {
+            position: relative;
+            background-color: #eee;
+            margin: 20px auto;
+            width: 600px;
+            height: 850px;
+            padding: 15px 60px 30px;
+        }
+
+        .container>h1 {
+            /* background-color: blue; */
+            margin: 0;
+            text-align: center;
+        }
+
+        .color-list {
+            padding: 0;
+            margin: 0;
+        }
+
+        .color-list>li {
+            border: 10px solid #fff;
+            display: inline-block;
+            list-style: none;
+            width: 265px;
+            height: 340px;
+            position: absolute;
+        }
+
+        .color-list > * div {
+            margin-top: 25px;
+            height: 120px;
+        }
+
+        .tomato-wrap {
+            background-color: #ff6347;
+            top: 120px;
+        }
+
+        .color-list > * h2 {
+            background-color: #fff;
+            padding: 25px 0;
+            margin: 0;
+        }
+
+        .color-list > * span {
+            display: block;
+            background-color: #fff;
+            padding: 0;
+            padding-bottom: 25px;
+        }
+
+        .teal-wrap{
+            top: 120px;
+            right: 60px;
+            background-color: #008080;
+        }
+  
+        .burlywood-wrap {
+            background-color: #deb887;
+            top: 510px;
+        }
+        
+        .thistle-wrap {
+            background-color: #d7bfd7;
+            top: 510px;
+            right: 60px;
+        } 
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>The Best Colors</h1>
+        <ol class="color-list">
+            <li class="tomato-wrap">
+                <div class="tomato">
+                    <h2>Tomato</h2>
+                    <span class="hex-code">#FF6347</span>
+                </div>
+            </li>
+            <li class="teal-wrap">
+                <div class="teal">
+                    <h2>Teal</h2>
+                    <span class="hex-code">#008080</span>
+                </div>
+            <li class="burlywood-wrap">
+                <div class="teal">
+                    <h2>Burlywood</h2>
+                    <span class="hex-code">#DEB887</span>
+                </div>
+            </li>
+            <li class="thistle-wrap">
+                <div class="teal">
+                    <h2>thistle</h2>
+                    <span class="hex-code">#D7BFD7</span>
+                </div>
+            </li>
+        </ol>
+    </div>
+</body>
+
+</html>

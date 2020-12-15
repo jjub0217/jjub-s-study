@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // const xhr = new XMLHttpRequest();
+        // // 1. 서버와 통신하기 위한 준비 단계
+        // xhr.open('GET', 'https://jsonplaceholder.typicode.com/todos/1')
+        // // └> 출처가 다르기때문에 url 넣는 부분에 url 전체를 다 적은것이다.
+
+        // // 2. 서버에 요청하는 단계 (요청이 서버에게 간것이다.)
+        // xhr.send();
+        
+        // // 3. 요청하는 것을 받아야 한다. 
+        // // 언제 서버에서 데이터가 올지 우리는 모른다.(서버에 상황도 있으니까~)
+        // xhr.onreadystatechange = () => {
+        //     // if(xhr.readyState === XMLHttpRequest.DONE) // <- 데이터가 도착했다는 의미
+        //     if(xhr.readyState !== XMLHttpRequest.DONE) return;
+        //     // response 가 성공인지 실패인지 알아봐야 한다.
+        //     if(xhr.status === 200) // <- 성공처리
+        //     {
+        //         // console.log(xhr.response); // <- 이벤트 객체가(객체 리터럴처럼 생긴 객체) .response 에 저장된다.
+        //         console.log(typeof xhr.response); // string
+        //         console.log(JSON.parse(xhr.response)); // {userId: 1, id: 1, title: "delectus aut autem", completed: false}
+
+        //     }else{    // <- 실패처리
+        //         console.error(xhr.status); // (200 외에는 다 에러다)400 에러면 400 에러 상태를, 500 에러면 500 에러 상태를 출력
+        //     }
+        // }
+        // <- 이런 GET 요청하는걸 여러번 하게 된다면?
+        // ┌---------함수로 만들자. 
+
+
+// 함수의 일부만 비동기로 동작해도 비동기로 동작하는 함수이다.
+// 비동기 함수는 리턴도 못하고, 할당도 못한다.
+
+// const render = (res) => {}
+const get = (url, sCallback, fCallback) => {
+        const xhr = new XMLHttpRequest();//<-----┐
+        xhr.open('GET', url)//                   │ 동기식 함수
+        xhr.send();// <--------------------------┘
+
+        xhr.onreadystatechange = () => { // <- 비동기식 함수
+            if(xhr.readyState !== XMLHttpRequest.DONE) return;
+
+            if(xhr.status === 200) 
+            {
+                // return (JSON.parse(xhr.response));
+                 // └> 현재 get 화살표함수는 이벤트 핸들러가 된 함수이기 때문에
+                 //    return 할수 없다. 
+                // res = JSON.parse(xhr.response); 
+                // render(res);
+                sCallback(JSON.parse(xhr.response));
+            }else{
+                fCallback(xht.response)    
+                // console.error(xhr.status); 
+            }
+        }
+    }
+    get('https://jsonplaceholder.typicode.com/todos/1', console.log, console.error());
+    // render(res);
+
+
+    </script>
+</body>
+
+</html>

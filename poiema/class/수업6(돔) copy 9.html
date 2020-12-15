@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <ul id="fruits">
+        <li class="apple">Apple</li>
+        <li class="banana">Banana</li>
+        <li class="apple">Orange</li>
+    </ul>
+
+    <script>
+
+        // DOM 조작 
+        // 복수의 노드 생성과 추가
+
+        const $fruits = document.getElementById('fruits');
+
+        // $fruits.innerHTML += '<li class="mango"> mango</li>'; // <- 얘만 하나만 추가되는게 아니라 
+        // 위에 3개 요소를 다시  새로 만드는 리플로우하고, 얘를 추가하는거다. 이건 불합리하다. 
+        // 그러므로 아래 코드처럼 해야 한다. 
+
+        document.createElement('li') // <- 얘는 어트리뷰트노드도 없고 텍스트노드없고, 요소노드만 잇는것이다.   <------┐
+        document.createTextNode('mango') // <- 얘는 어트리뷰트노드도 없고 텍스트노드없고, 요소노드만 잇는것이다. <----┴--- 둘도 관계가 없고, 위의 html마크없 3개 요소의 돔과도 전혀 상관이 없기때문에 아무런 변화가 없다. 
+
+        const $mango = document.createElement('li'); // <------┐
+        const textNode = document.createTextNode('mango');//   ├-- 이렇게 해야 위에 상관없었던 두개가 상관있게 된다.
+        $mango.appendChild(textNode); //                       │// <- textNode 를 mango의 자식으로 만들었다.
+        $mango.className = 'mango' // <------------------------┘
+
+        $fruits.appendChild($mango) // <- 이렇게까지 해야 부모노드(돔)하고도 상관있게 된다.
+        // appendChild 는 위치를 지정할수 없다는 문제점이 있다. 
+        // └> 이 문제점의 해결방안은 insertAdjacentHTML 메서드다. : 하지만, 이건 텍스트를 지정한다.
+        
+        
+    </script>
+</body>
+
+</html>

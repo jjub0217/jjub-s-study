@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <input name = "id" type="text" placeholder="id">
+    <input name="text"type="text" placeholder="password">
+
+    <script>
+        const $inputId = document.getElementsByName('id')
+        console.log($inputId);
+        
+        const $inputId1 = document.querySelector('input[name=id]')
+        console.log($inputId1);
+
+        const $inputText = document.getElementsByName('text')
+        console.log($inputText);
+        
+        const $inputText1 = document.querySelector('input[name=text]')
+        console.log($inputText1);
+        
+    </script>
+</body>
+
+</html>

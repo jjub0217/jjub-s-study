@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul class="news"></ul>
+    <script>
+        const url = "API url"
+
+        // 1단계
+        // fetch(url)
+        // .then(res => res.json) // <- json 으로 데이터를 받아온다.
+        // .then(data => console.log(data)) // json으로 받아온 데이터가 data에 담긴다.
+        // .catch(error => console.log(error))
+
+        /* < CORS error > 
+            - 반드시 절대경로를 줘야 한다.
+            - 한 서버에서 html 과 data 를 가져와야 하는데, html 을 가져오는 서버와 data 를 가져오는 서버가 다르다면, 이건 의심받을 행동이기 때문에 
+            정책에 위반된다. 그래서 팅겨내서 에러를 발생시킨다.
+            그렇다면 그렇게는 구축 못하냐? 구축할수 있다. 프론트가 아니라, 백엔드에서 구축해줘야 해결할수 있다.
+            └> 127.0.0 이렇게 접근해서 에러난거다. : localhost 를 사용하면 동작할수 있다.
+            */
+
+
+        // 2단계
+        // fetch(url)
+        // .then(res => res.json) // <- json 으로 데이터를 받아온다.
+        // .then(({article}) => console.log(article)) // json으로 받아온 데이터가 data에 담긴다.
+        // .catch(error => console.log(error))
+
+        // 3단계
+        const render = articles => {
+            console.log(articles);
+            document.querySelector('.news').innerHTML = articles
+            .map(({ urlToImage, url, title }) => `
+            <li>
+                <img src="${urlToImage}" style="width: 300px">
+                <a href="${url}">${title}</a>
+                </li>`
+                )
+                .join('')
+        };
+
+
+        // fetch(url) // <- 비동기식으로 작동하게끔 만든 예시 <----------------------------------------------------------------┐
+        //     .then(res => res.json) // <- json 으로 데이터를 받아온다.                                                       │
+        //     .then(({ articles}) => console.log(article)) // json으로 받아온 데이터가 data에 담긴다.                         │
+        //     .catch(error => console.log(error))//                                                                          │
+        //                                                                                                                    │
+        //     // 1단계  : 동기식으로 작동하게끔 만든 예시  <---------------------------------------------┐                     │
+        //     try {//                                                                                  │                     │
+        //     const res = fetch(url);//                                                                │                     │
+        //     const {articles} = res.json();//                                                         ├----┐                │
+        //     render(articles)//                                                                       │    │                │
+        //     } catch(e) {//                                                                           │    │                │
+        //         console.error(e)//                                                                   │    │                │
+        //     } // <- 브라우저가 에러를 잡지 못한다. <---------------------------------------------------┘   │                │
+/*                                                                                                           ├<---------------┘
+            // await 키워드는 async 라는 함수 안에서만 쓰여야 하며, 프로미스 앞에서 쓰여야 한다.                │
+            // async 함수는 언제나 프로미스를 반환한다.                                                       │
+            │                                                                                                │
+            // 2단계 : 동기식   <------------------------------------------------------------------┐         │*/
+            //    ( async () => { //                                                              │          │
+            //         const res = await fetch(url);//                                            ├----------┘  
+            //         console.log(res);//                                                        ├---- <-------------------┐
+            //     })();// <----------------------------------------------------------------------┘                         │
+/*                                                                                                                          │           
+                                                                                                                            │
+            // 3단계 (리팩토링)                                                                                              │*/
+            // ( async () => { //  <------------------------------------------------------------------------------┐         │   
+            //     const res = await fetch(url);// <- 에러를 발생시킬 가능성이 높은 코드다. : url 에 오타가 나면....│         │           
+            //     // const await = await res.json();//                                                           ├---------┘  
+            //     const {articles} = await res.json();//                                                         │  
+            //     console.log(res);//                                                                            │                            
+            //     render(articles)//                                                                             │   
+            // })();// <------------------------------------------------------------------------------------------┘
+
+
+        // 3단계 : 에러처리 (기본적으로 try catch 로 한다. )
+        // 에러를 발생시킬지도 모르는 코드들을 try 코드 블럭 내에 넣는다. 
+        // 에러를 발생하면 catch 의 인수인 error 에 던져져서 담긴다.
+        // catch문이 그 에러를 잡으면, catch 문 안에 에러를 내보내는 코드를 넣는다.
+        // finally 문 : 에러가 났든 안났든 한번은 실행하는 문 : try 코드 블럭 안에서 에러가 나거나 안나거나 후처리 할때 사용한다.
+        ( async () => { // <--------------------------------------------------------┐  
+            try{//                                                                  │
+            const res = await fetch(url);//                                           │
+             // const await=await res.json();//                                     │  
+            const {articles}=await res.json();//                                    │ 
+            console.log(res);//                                                     │ 
+            render(articles)//                                                      │ 
+        }catch(error){//                                                            │
+            console.error('[ERROR', error);//                                       │
+        }//                                                                         │
+        })();//<--------------------------------------------------------------------┘
+           
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <input id="user" class="foo bar" type="text" value="ungmo2">
+    <input id="cb" type="checkbox" checked>
+
+
+    <script>
+        const $user = document.getElementById('user')
+        const $cb = document.getElementById('cb')
+
+
+
+        console.log(document.getElementById('user').value); // ungmo2
+        console.log($user.value);
+        console.log(document.getElementById('user').getAttribute('value')) // ungmo2
+        console.log($user.getAttribute('value')) // ungmo2
+
+        $user.oninput = () => {
+            // <- input 이라는 이벤트 발생시킨 요소
+            // console.log('oninput');
+            console.log($user.value);
+            console.log($user.getAttribute('value'));
+        } // <- input에 타이핑할때마다 발생하는 이벤트
+
+
+        $cb.onchange = () => {
+            console.log($cb.checked); // <- 얘의 체크드인지 확인하고 싶다.
+        }
+
+
+        
+    </script>
+</body>
+
+</html>

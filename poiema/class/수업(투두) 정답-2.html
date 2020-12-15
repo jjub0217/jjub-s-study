@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todos</title>
+    <style>
+        .todos {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .container {
+            margin: 30px auto;
+            width: 300px;
+        }
+
+        .todos>li>label>span {
+            display: inline-block;
+            width: 130px;
+            padding: 0 10px;
+        }
+
+        .todos>li>label>input[type="checkbox"]:checked+span {
+            text-decoration: line-through;
+        }
+
+        /*<- 띄어쓰기가 중요하다. */
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <input type="text" class="input-todo" placeholder="enter todo!">
+        <button class="add">add</button>
+        <ul class="todos">
+            <!-- <li><label>
+                    <input type="checkbox"><span>HTML<span></label>
+                <button class="remove">X</button></li> -->
+        </ul>
+    </div>
+    <script>
+        const $form = document.querySelector('form');
+        const $inputTodo = document.querySelector('.input-todo');
+        const $add = document.querySelector('button');
+        const $todos = document.querySelector('.todos');
+        
+
+        const addTodo = (content) => {
+            // $todos.innerHTML = `<li><label><input type="checkbox"><span>${content}</span></label>
+            //       <button class="remove">X</button><li>` + $todos.innerHTML;
+
+            const $li = document.createElement('li');
+            const $label = document.createElement('label');
+            const $input = document.createElement('input');
+            const $span = document.createElement('span');
+            const $button = document.createElement('button');
+
+            $input.input('type', "checkbox");
+            $button.classList.add('.remove');
+            $span.textContent = content;
+            $button.textContent = X ;
+
+            $label.appendChild($input);
+            $label.appendChild($span);
+
+            $li.appendChild($label);
+            $li.appendChild($button);
+
+            console.log($todos.firstElementChild);
+            $todos.insertBefore($li, $todos.firstElementChild);
+            
+            
+        }
+        
+
+        $inputTodo.onkeypress = e => {
+            // if (e.key !== 'Enter') return;
+            // if ($inputTodo.value === '') return; // <- 이것도. 이니까 or 이다. 
+            //┌ 아래 코드처럼 단축평가 쓰자 
+            if (e.key !== 'Enter' || !$inputTodo.value) return;
+            addTodo($inputTodo.value);
+            $inputTodo.value = ''; 
+        }
+
+        $add.onclick = () => {
+            addTodo($inputTodo.value);
+            $inputTodo.value = '';
+            $inputTodo.focus(); // <- 이거 뭔지 알아내기 : 커서이동
+        }
+
+
+
+        // $inputTodo.onkeypress = e => {
+        //     // if (e.key !== 'Enter') return;
+        //     // if ($inputTodo.value === '') return; // <- 이것도. 이니까 or 이다. 
+        //     //┌ 아래 코드처럼 단축평가 쓰자 
+        //     if (e.key !== 'Enter' || !$inputTodo.value) return;
+        //     $todos.innerHTML = `<li><label><input type="checkbox"><span>${e.target.value}<span></label>
+        //           <button class="remove">X</button><li>` + $todos.innerHTML;
+        //     $inputTodo.value = '';
+        // }
+
+        // $add.onclick = () => {
+        //     // console.log(e); // button.add
+        //     // console.log(e.target);
+        //     // console.log(e.target.value);
+        //     // if(!e.target.matches('li > button')) return;
+        //     $todos.innerHTML = `<li><label><input type="checkbox"><span>${e.target.value}<span></label>
+        //                 <button class="remove">X</button>
+        //                 <li>` + $todos.innerHTML;
+        //     $inputTodo.value = '';
+        //     $inputTodo.focus(); // <- 이거 뭔지 알아내기
+        // }
+
+
+
+        //----------------------------------------------------------------
+
+
+        // CSS 적용시, 필요없는 코드
+
+        // 1번
+        // $todos.onchange = e => {
+        //     console.log(e); // $inputTodo
+        //     console.log(e.target); // checkbox
+        //     // e.target.checked ? e.target.nextElementSibling.textDecoration = 'line-through'
+        //     // e.target.nextElementSibling.textDecoration =  e.target.checked ? 'line-through' : none;
+        //     target.nextElementSibling.style.textDecoration = target.checked ? 'line-through' : none;
+        // }
+
+        // 2번
+        // $todos.onchange = ({target}) => {
+        //     target.nextElementSibling.style.textDecoration = target.checked ? 'line-through' : none;
+        // }
+
+        // -----------------------------------------------------------------
+
+        $todos.onclick = e => { // x 만 눌렸을때 이벤트를 실행시켜야 한다.
+            console.log(e); // 
+            console.log(e.target); // checkbox
+            // if(!e.target.classList.contains('remove')) return;
+            if (!e.target.matches('.todos > li > .remove')) return;
+            console.log(e.target);
+            $todos.removeChild(e.target.parentNode);
+        }
+    </script>
+</body>
+
+</html>

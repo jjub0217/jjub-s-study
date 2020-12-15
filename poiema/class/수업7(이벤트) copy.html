@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+
+<body>
+    <input type="text" id="use-id">
+    <button>add</button>
+    <script>
+        const $button = document.querySelector('button') 
+        const $userId = document.getElementById('use-id')
+        
+        const print = ($button) => { // 여기서 e 는 button 요소이다. 
+            $userId.value = '';
+        }
+
+        $button.onclick = print; // <- 함수 정의를 줬다. 함수정의를 줘야, 브라우저가 나중에 이벤트가 발생한 이후에 
+                                 // 해당 함수를 호출한다.
+
+    </script>
+</body>
+
+</html>

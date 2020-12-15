@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todos</title>
+    <style>
+      .container {
+        width: 300px;
+        margin: 30px auto;
+      }
+      .todos {
+        list-style-type: none;
+        padding: 0;
+      }
+      .todos > li > label > span {
+        display: inline-block;
+        width: 120px;
+        padding: 0 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+        <form>
+          <input class="input-todo" type="text" name="foo" placeholder="enter todo!" />
+        <button class="add">add</button>
+      </form>
+      <ul class="todos">
+        <!-- <li>
+          <label>
+            <input type="checkbox" /><span>HTML</span>
+          </label>
+          <button class="remove">X</button>
+        </li> -->
+      </ul>
+    </div>
+    <script>
+      // STates
+      let todos = [];
+      
+      
+      // DOMs
+      const $inputTodo = document.querySelector('.input-todo');
+      const $form = document.querySelector('form');
+      const $todos = document.querySelector('.todos');
+      
+      const fetchTodos = () => {
+        todos = [ { id: 1, content: 'HTML', completed: false },
+          { id: 2, content: 'CSS', completed: true },
+          { id: 3, content: 'Javascript', completed: false }
+        ].sort((todo1, todo2) => todo2.id - todo1.id); 
+        
+        render();
+      }; // fetch는 서버에서 꺼내온다는 의미로 쓰인다.
+      // 얘를 고치면 다시 render 한다.
+      
+      const render = () => { // fetchTodos를 보고 HTML을 만들어낸다.
+        let html = '';
+        todos.forEach(({id, content, completed}) => {
+          html +=
+          `<li id="${id}">
+          <label>
+            <input type="checkbox"${completed ? 'checked' : ''} /><span>${content}</span>
+            </label>
+          <button class="remove">X</button>
+        </li>`
+  });
+       
+  $todos.innerHTML = html;
+};
+const generateNextid = () => 
+(todos.length ? Math.max(...todos.map(todo => todo.id)) +1 : 1);
+      const addTodo = content => {
+        todos = [{id: generateNextid(), content, completed: false }, ...todos];
+        render();
+      };
+      const removeTodo = id => {
+        todos = todos.filter(todo => todo.id !== +id); // 
+        render();
+      };
+      const toggleTodoCompleted = id => {
+       todos = todos.map(todo => {
+         return todo.id === +id ? {...todo, completed: !todo.completed} : todo; // todo를 풀면 복사를 하는데 completed가 있는데 뒤에 또 써주면 뒤껄로 덮어쓴다/.
+        });
+        render();
+      };
+      window.onload = fetchTodos();
+      // 이게 왜 이벤트 핸들러 등록이지?
+      // Event Bindings
+      $form.onsubmit = (e) => {
+        e.preventDefault();
+        if (!$inputTodo.value) return;
+        // concat 사용시
+        // [{id: generateNextid(), content: $inputTodo.value, completed: false}]
+        //.concat(todos) 
+        addTodo($inputTodo.value);
+        $inputTodo.value = '';
+        $inputTodo.focus();
+      };
+      $todos.onclick = e => {
+        if (!e.target.matches('.todos > li > button.remove')) return;
+        console.log(e);
+        console.log(e.target); // button
+        console.log(e.target.parentNode);// li
+        console.log(e.target.parentNode.id);// 3
+        removeTodo(e.target.parentNode.id);
+      };
+      $todos.onchange = e => {
+        const id = e.target.parentNode.parentNode.id;
+        toggleTodoCompleted(e.target.parentNode.parentNode.id);
+      };
+    </script>
+  </body>
+</html>

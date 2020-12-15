@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <ul id="fruits">
+        <li class="apple">Apple</li>
+        <li class="banana">Banana</li>
+        <li class="apple">Orange</li>
+    </ul>
+
+    <script>
+        // textContent 
+        const $apple = document.querySelector('.apple')
+        $apple.textContent = '<span>SAMSUNG</span>'
+        /*// └> <ul id="fruits">
+                    <span>SAMSUNG</span>
+                    <li class="banana">Banana</li>
+                    <li class="apple">Orange</li>
+                </ul>
+        */ // 텍스트노드의 값만 바뀌는거고
+
+        $apple.innerHTML = '<span>SAMSUNG</span>'
+        /*// └> <ul id="fruits">
+                    <li class="apple"> 
+                        <span>SAMSUNG</span>
+                    </li>
+                    <li class="banana">Banana</li>
+                    <li class="apple">Orange</li>
+                </ul>
+        */ // 새로운 요소를 만들어서 집어넣는것이다. : 이건 보안에 문제가 있다. 그래서 HTML4에서는 실행이 되서 
+           // 보안에 문제가 되었는데 현재는 실행이 안된다.
+    </script>
+</body>
+
+</html>

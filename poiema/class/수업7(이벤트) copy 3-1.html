@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+
+<body>
+    <input type="text">
+    <ul id="fruits">
+        <li id="apple">Apple</li>
+        <li id="banana">Banana</li>
+        <li id="orange">Orange</li>
+    </ul>
+    <script>
+        const $input = document.querySelector('input');
+        const $li = document.createElement('li');
+        const $ul = document.getElementById('fruits')
+
+
+
+        const print = (e) => {
+            if (e.key !== 'enter') return;
+            $ul.innerHTML += `<li id=${}`
+                // $input.value = '';
+            // $li.appendChild($input.value);
+            // $ul.appendChild($li)
+            // $ul.appendChild($li)
+        }
+
+        $input.addEventListener('keyup', print)
+    </script>
+</body>
+
+</html>

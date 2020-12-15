@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+
+<body>
+    <input type="text">
+    <ul id="fruits">
+        <li>Apple</li>
+        <li>Banana</li>
+        <li>Orange</li>
+    </ul>
+    <script>
+        const $input = document.querySelector('input');
+        const $ul = document.getElementById('fruits');
+        // const $li = document.createElement('li');
+        // const $ul = document.getElementById('fruits');
+        // const $child = [...$ul.children];
+
+
+
+        [...$ul.children].forEach($li => {
+            $li.onclick = e => {
+                console.log(e.target.textContent);
+            };
+        });
+
+
+
+
+
+        // $input.onkeyup = e => {
+        //     if(e.key !== 'Enter') return;
+        //     $ul.innerHTML += `<li>${$input.value}</li>`;
+
+        //     [...$ul.children].forEach($li => {
+        //         $li.onclick = e => {
+        //             console.log(e.target.textContent);
+        //         };
+        //     });
+        // }
+
+
+
+        $input.onkeyup = e => {
+            if (e.key !== 'Enter') return;
+            // $fruits.innerHTML += `<li>${$input.value}</li>`;
+            const $li = document.createElement('li');
+            const textNode = document.createTextNode($input.value);
+            $li.appendChild(textNode);
+            $ul.appendChild($li);
+
+            // [...$fruits.children].forEach($li => {
+            //     $li.onclick = e => {
+            //         console.log(e.target.textContent);
+            //     };
+            // });
+
+            $li.onclick = e => {
+                console.log(e.target.textContent);
+            }
+        }
+    </script>
+</body>
+
+</html>

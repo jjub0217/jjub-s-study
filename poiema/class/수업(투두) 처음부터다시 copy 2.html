@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todos</title>
+    <style>
+        .todos {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .container {
+            margin: 30px auto;
+            width: 300px;
+        }
+
+        .todos>li>label>span {
+            display: inline-block;
+            width: 130px;
+            padding: 0 10px;
+        }
+
+        .todos>li>label>input[type="checkbox"]:checked+span {
+            text-decoration: line-through;
+        }
+
+        /*<- 띄어쓰기가 중요하다. */
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form><input type="text" class="input-todo" placeholder="enter todo!">
+            <button class="add">add</button></form>
+        <ul class="todos">
+            <!-- <li><label>
+                    <input type="checkbox"><span>HTML<span></label>
+                <button class="remove">X</button></li> -->
+        </ul>
+    </div>
+        <script>
+            // state
+            let todos = []; // <- 빈 배열이잖아, 이거 왜한거지...
+
+            // Doms
+            const $inputTodo = document.querySelector('.input-todo')
+            const $form = document.querySelector('form')
+            const $todos = document.querySelector('.todos') 
+
+            const fetchTodos = () => {
+            todos =  [{ id: 3, content: 'HTML', completed: false },
+            { id: 2, content: 'CSS', completed: true },           
+            { id: 1, content: 'Javascript', completed: false }
+            ].sort((todo1, todo2) => todo2.id - todo1.id);    
+            
+            render();
+        };  
+        const render = () => {
+        let html = '';
+            
+        todos.forEach(({id, content, completed})  => { 
+        html += `<li id="${id}"><lable>
+                <input type="checkbox" ${completed ? 'checked' : ''}>
+                <span>${content}<span></label>
+                <button class="remove">X</button></li>`
+        });
+            $todos.innerHTML = html;
+        };                                                                                
+            
+        
+        // 다음 id를 구하는 함수(새로운 id를 만드는 함수)                                                     
+        const gernerateNextId = () =>                                                                     
+        (todos.length ? Math.max(...todos.map(todo => todo.id))+1 : 1)                              
+        
+        const addTodo = content => {                                                                            
+            todos =[{id: gernerateNextId(), content, completed: false}, ...todos];
+            render();
+        }
+
+        const removeTodo = (id) => {
+            todos = todos.filter(todo => todo.id !== +id);
+            render();
+        } 
+
+
+        const toggleTodoCompleted = id => {
+            todos = todos.map(todo => {
+                return todo.id === +id ? {...todo, completed : !todo.completed} : todo
+            })
+        render();
+        }
+
+        // Event Bindings
+        window.onload = fetchTodos();
+
+
+        $form.onsubmit = (e) => {
+        e.preventDefault();
+        if (!$inputTodo.value) return;
+        // concat 사용시
+        // [{id: generateNextid(), content: $inputTodo.value, completed: false}].concat(todos) 
+        addTodo($inputTodo.value);
+        $inputTodo.value = '';
+        $inputTodo.focus();
+      };
+
+        $todos.onclick = e => {
+        if (!e.target.matches('.todos > li > button.remove')) return;
+        
+        removeTodo(e.target.parentNode.id);
+      };
+
+
+        $todos.onchange = e => {
+        const id = e.target.parentNode.parentNode.id;
+        toggleTodoCompleted(e.target.parentNode.parentNode.id);
+      };
+    </script>
+</body>
+
+</html>

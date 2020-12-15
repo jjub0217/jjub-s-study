@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+
+<body>
+    <input type="text" id="use-id">
+    <input type="password" id="password">
+    <!-- <button onclick="sayHi('Lee')">Click me</button> -->
+    <button>Click me</button>
+    <script>
+        // function sayHi(name) {
+        //     console.log(`Hi! my name is ${name}`);
+        // }
+        const $userId = document.getElementById('use-id')
+        const $password = document.getElementById('password')
+        const $button = document.querySelector('button') // button 이라는 모든 요소 노드를 탐색하여 반환한다.
+
+        const print = () => {
+            console.log($userId.value, $password.value);
+        }
+
+        // $button.onclick = print(); // <- 이러면 안된다. 이거는 undefined 를 준것이다.
+        $button.onclick = print; // <- 함수 정의를 줬다. 함수정의를 줘야, 브라우저가 나중에 이벤트가 발생한 이후에 
+                                 // 해당 함수를 호출한다.
+    </script>
+</body>
+
+</html>

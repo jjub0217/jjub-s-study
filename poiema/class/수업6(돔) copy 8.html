@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+<input class="input-todo" type="text">
+<button class="add">add</button>
+<ul class="todos"></ul>
+
+    <script>
+    const todos = [{ id: 3, content: 'HTML', completed: false },
+        { id: 2, content: 'CSS', completed: true },
+        {  id: 1,  content: 'Javascript',  completed: false } ];
+
+        console.log(todos[0].id)
+
+        // Nodes
+        const $addButton = document.querySelector('.add');
+        const $inputTodo = document.querySelector('.input-todo');
+
+
+
+
+    function render() {
+
+        document.querySelector('.todos').innerHTML = todos.map(({id, content, completed}) => {
+        return `<li id="${id}">
+            <label><input type="checkbox" ${completed ?'checked' : '' }>${content}</label>
+        </li>` }) 
+        //<- 문자열을 3개 가지고 있는 배열을 만들었을 뿐이다. 
+        .join('') 
+    } // <- 여기까지한게 문자열을 만든것이다.
+
+    render(); // <- render 함수는 현재 html 마크업에 아무것도 그려져있지 않으니까, 그리는 함수이다.
+
+
+
+
+    $addButton.onclick = (e) => {
+        `<li id="4">
+        <label><input type="checkbox">${$inputTodo.value}</label>
+    </li>` // <- 이게 새로운 할일이다.
+        console.log('Click', $inputTodo.value);
+    } // <- 이건 add 버튼을 클릭하면 새로운 li 를 추가삽입하는 새로운 할일의 이벤트이다.
+
+
+
+    </script>
+</body>
+
+</html>

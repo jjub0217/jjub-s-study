@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        .apple {
+            color: red
+        }
+
+        .banana {
+            color: green;
+        }
+    </style>
+    <ul>
+        <li class="apple">Apple</li>
+        <li class="apple">Banana</li>
+        <li class="apple">Orange</li>
+    </ul>
+    <script>
+        // 메서드 사용법
+
+        const $apples = document.querySelectorAll('.apple'); // querySelectorAll 얘네는 NodeList 객체에 담는다.
+        console.log($apples);
+        // 배열로 변환해서 사용해라
+
+        [...$apples].forEach($apple => $apple.className = 'banana');
+
+        // [...$apples].forEach($apple => $apple.firstChild.nodeValue = 'Apple'); 
+        // └>  nodeValue 라는 프로퍼티를 사용해야 하는 불편함이 있다. 그러므로, 아래처럼 textContent 프로퍼티를  써라.
+        [...$apples].forEach($apple => $apple.textContent = 'Apple') 
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <style>
+        #fruits {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+        }
+
+        #fruits>li {
+            width: 100px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .active {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="fruits">
+        <li id="apple" class="active">Apple</li>
+        <li id="banana">Banana</li>
+        <li id="orange">Orange</li>
+    </ul>
+    <script>
+        const $ul = document.getElementById('fruits');
+        const $active = document.querySelector('.active');
+
+        $ul.onclick = e => {
+            if (!e.target.matches('#fruits > li')) return; // <- css 문법에 matches 되느냐?
+            // $active.classList.remove('active'); <-----┐
+            // e.target.classList.add('active'); <-------┴----------------- 1번 -----┐ 
+            console.log(e.target); // $ul 에서 $li으로만 되었다.                      │
+//                                                                                   │
+            [...$ul.children].forEach($ul => { // <--------------------┐             │
+                if ($ul === e.target) $ul.classList.add('active')//    │             │  
+                else $ul.classList.remove('active'); //                ├--- 2번 -----┤  
+            }); // <---------------------------------------------------┘             │
+//                                                                                   │
+            // [...$ul.children].forEach($ul => { // <--------------------┐          │
+            //     $ul.classList.toggle('active', $ul === e.target);//    ├-- 3번 ---┘
+            // └> true 로 평가되면 강제로 붙히고, false 면 강제로 뗀다 // <--┘
+            // })
+        }
+
+
+
+
+        // $ul.onchange = e => {
+        //     if(!e.target.classList === 'active')
+        //     // if (!e.target.matc hes('#fruits > li')) return; // <- css 문법에 matches 되느냐?
+        //     // console.log(e.target); // $ul 에서 $li으로만 되었다.
+        // }
+    </script>
+</body>
+
+</html>

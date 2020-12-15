@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todos</title>
+    <style>
+        .todos {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .container {
+            margin: 30px auto;
+            width: 300px;
+        }
+
+        .todos>li>label>span {
+            display: inline-block;
+            width: 130px;
+            padding: 0 10px;
+        }
+
+        .todos>li>label>input[type="checkbox"]:checked+span {
+            text-decoration: line-through;
+        }
+
+        /*<- 띄어쓰기가 중요하다. */
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <input type="text" class="input-todo" placeholder="enter todo!">
+        <button class="add">add</button>
+        <ul class="todos">
+            <!-- <li><label>
+                    <input type="checkbox"><span>HTML<span></label>
+                <button class="remove">X</button></li> -->
+        </ul>
+    </div>
+    <script>
+
+        // state
+        // ┌ 짝퉁함수(짝퉁서버)를 만들자. 
+        let todos =[];
+
+        //DOMs
+        const $inputTodo = document.querySelector('input');
+        const $todos = document.querySelector('.todos');
+
+
+
+        const fetchTodos = () => {
+            return [
+                { id: 3, content: 'HTML', completed: false },
+                { id: 2, content: 'CSS', completed: true },
+                { id: 1, content: 'Javascript', completed: false }
+            ];
+        };
+
+        const render = () => {
+        $todos.innerHTML = todos.map(todo => 
+            `<li id="${todo.id}">
+            <label><input type="checkbox" ${todo.completed ? 'checked' : '' }>
+            <span>${todo.content}</span></label>
+            <button class="remove">X</button></li>`).join('');
+        };
+        
+        const addTodo = content => {
+            return todos = [{ id: 4, content, completed: false }, ...todos];
+            // { id: ?, content: ?, completed: false },
+            // { id: 4, content: content, completed: false },
+            // todos = [newTodo, ...todos] // 새로운 todos 데이터를 만들었다. 
+        };
+
+        window.addEventListener('DOMContentLoaded', () => {
+        todos = fetchTodos(); 
+        // console.log('DOMContentLoaded'); // <- 이게 onload 보다 빨리 동작한다. 
+        // console.log('onload'); // 이미지 등이 다 온 다음에 동작하려면 onload 쓰면 된다. 
+        // console.log(todos);
+        render();
+    })
+
+    $inputTodo.onkeyup = e => {
+        if(e.key !== 'Enter' || !$inputTodo.value) return;
+        addTodo($inputTodo.value); // <- 엔터키가 눌려지고, 빈문자열이 아닐때 실행
+        $inputTodo.value = '';
+
+        render();
+    }
+    </script>
+</body>
+
+</html>

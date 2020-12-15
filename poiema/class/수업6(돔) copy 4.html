@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- <ul id="fruits"><li class="apple">Apple</li><li class="banana">Banana</li><li class="apple">Orange</li></ul> -->
+    <!--└> 이때 $fruits.childNodes 는 3개 이다. -->
+
+    <ul id="fruits">
+        <li class="apple">Apple</li>
+        <li class="banana">Banana</li>
+        <li class="apple">Orange</li>
+    </ul>
+
+    <script>
+        // 형제노드 탐색
+
+        const $fruits = document.getElementById('fruits');
+        console.log($fruits.childNodes); // 자식노드들은 싹다 가져오겠다. : .childNodes 는 접근자 프로퍼티이다.
+        // NodeList(7) [text, li.apple, text, li.banana, text, li.apple, text]
+
+        // 칠드런을 쓰면 텍스트노드(공백 포함)는 안 가져오고, 요소노드만 가져온다. 
+        console.log($fruits.children); // HTMLCollection(3) [li.apple, li.banana, li.apple]
+
+        // [...$fruits.children].forEach($fruit => {
+        //     $fruit.style.backgroundColor = 'red'
+        // })
+        // <- 전체 다 빨간색으로 만들어라.
+
+        $fruits.lastElementChild.style.backgroundColor = 'red'
+        $fruits.firstElementChild.nextElementSibling.style.backgroundColor = 'blue'
+
+        // 애플을 취득한 다음에 부모의 id를 출력하여라.
+        const $apple = document.querySelector('.apple');
+        // const $apple = document.getElementsByClassName('apple'); // <- 이건 왜 안되죠? getElementsByClassName 얘는 HTMLCollection 객체가 갖고있는 메서드이고,
+        console.log($apple.parentNode) // <- parentNode 프로퍼티는 NodeList 객체가 갖고있는 프로퍼티이기 때문에 querySelector 메서드 를 사용해야 한다. 
+        console.log($apple.parentNode.id)
+    </script>
+</body>
+
+</html>

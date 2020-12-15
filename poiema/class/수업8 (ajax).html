@@ -1,0 +1,49 @@
+<!-- // 비동기 통신하는 방법
+// 1. XMLHTTPRequest
+// 2. Promise
+// 3. fetch 함수
+// 4. async / await
+
+// XMLHTTPRequest : web API 이기 때문에 Node 에는 없다. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="#" method="POST"><!-- // <-- method 부분 비워놓으면 기본으로 GET방식이 적용된다. -->
+        <!-- 원래 action 부분에는 서버인 url 을 넣어야 한다. -->
+        <input class="user-id" name="user-id" type="text">
+        <!-- GET방식 쓸때는 반드시 name 어트리뷰트가 있어야 한다. -->
+        <input class="password" type="text">
+        <button>submit</button>
+    </form>
+    <script>
+        
+        // 서버와 통신하기 위해 준비하는 단계의 방식 : 5가지 단계의 방식
+        // CRUD : create / read / update / delete
+        // 1. GET - C"R"UD : (특정 데이터(리소스) / 모든 데이터(리소스)) 취득
+        // 2. POST - "C"RUD : 데이터(리소드) 생성
+        // 3. PUT - CR"U"D  : 데이터(리소스) 전체를 바꿀때 (id, content, complete)
+        // 4. PATCH - CR"U"D  : 데이터(리소스) 일부만 바꿀때
+        // 5. DELETE - CRU"D" 
+        
+        // form 태그는 GET / POST 방식이다.
+        // xhr.open('GET', 'URI'); // <- 어떤 서버에 요청할지 : url
+    
+        
+        // 웹 애플리케이션이란?
+        // 기존의 웹은 인스톨이었다. 얘네는 업데이트가 힘들다.
+        // 웹 애플리케이션 :  인스톨이란 개념이 없고, 업데이트가 있으면 서버에 업데이트 하면 자동으로 업데이트가 된다.
+        
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', )
+    </script>
+</body>
+
+</html>

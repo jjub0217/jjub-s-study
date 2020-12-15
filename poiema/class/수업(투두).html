@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todos</title>
+    <style>
+        .todos {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .container {
+            margin: 30px auto;
+            width: 300px;
+        }
+
+        .todos>li>label>span {
+            display: inline-block;
+            width: 130px;
+            padding: 0 10px;
+        }
+
+        .todos>li>label>input[type="checkbox"] :checked+span {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <input type="text" class="input-todo" name="foo" placeholder="enter todo!">
+        <button class="add">add</button>
+        <ul class="todos">
+            <!-- <li><label>
+                    <input type="checkbox"><span>HTML<span></label>
+                <button class="remove">X</button></li> -->
+        </ul>
+    </div>
+    <script>
+        const $form = document.querySelector('form');
+        const $inputTodo = document.querySelector('.input-todo');
+        const $todos = document.querySelector('.todos');
+        const $add = document.querySelector('button');
+
+
+
+        // $form.onsubmit = (e) => {
+        //     console.log(e); // button.add
+        //     console.log(e.target); // <form>...</form>
+        //     e.preventDefault();
+        //     console.log($inputTodo.value);
+        //     $todos.innerHTML =
+        //         `<li><label>
+        //             <input type="checkbox"><span>${$inputTodo.value}<span></label>
+        //         <button class="remove">X</button></li>` + $todos.innerHTML;
+        // }; // input 에 입력된 값을 서버에 보내고, 다시 랜더링하는 submit 이벤트
+
+
+        function newTodo(e) {
+            // console.log(e);
+            // console.log(e.target);
+            if (e.key !== 'Enter') return;
+            $todos.innerHTML = `<li><label><input type="checkbox"><span>${e.target.value}<span></label>
+                <button class="remove">X</button>
+            <li>` + $todos.innerHTML;
+            $inputTodo.value = '';
+        }
+
+        $inputTodo.addEventListener('keydown', newTodo);
+        // $add.addEventListener('click', newTodo)
+
+        const $checkbox = document.querySelector('input[type=checkbox]');
+        console.log($checkbox);
+
+        $checkbox.onchange
+
+        // const $span = document.querySelector('span');
+        // console.log($span);
+        // $span.classList.add('text');
+
+
+
+        // $inputTodo.onkeydown = e => {
+        //     // console.log(e); // $inputTodo
+        //     // console.log(e.target);// $inputTodo
+        //     if (e.key !== 'Enter') return;
+        //     // console.log(e.target.value);
+
+        //     // const $li = document.createElement('li');
+        //     // let html = '';
+        //     // html += `<label><input type="checkbox"><span>${e.target.value}<span></label>
+        //     //      <button class="remove">X</button>`
+        //     //  console.log($li);
+        //     // $todos.appendChild(html);
+        //     // $todos.textContent = e.target.value;
+        //     // e.target.value = '';
+
+        //     $todos.innerHTML = `<li><label><input type="checkbox"><span>${e.target.value}<span></label>
+        //           <button class="remove">X</button><li>` + $todos.innerHTML
+        // }
+
+        // $add.onclick = e => {
+        //     console.log(e); // button.add
+        //     console.log(e.target);
+        //     console.log(e.target.value);
+        //     if(!e.target.matches('li > button')) return;
+        //     $todos.innerHTML = `<li><label><input type="checkbox"><span>${e.target.value}<span></label>
+        //                   <button class="remove">X</button>
+        //               <li>` + $todos.innerHTML
+
+        // }
+    </script>
+</body>
+
+</html>

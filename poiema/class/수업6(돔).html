@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        .apple {
+            color: red
+        }
+    </style>
+    <ul id="fruits">
+        <!-- <li id="apple foo bar">Apple</li> -->
+        <li id="apple">Apple1</li>
+        <li id="apple">Apple2</li>
+        <li id="banana">Banana</li>
+        <li id="orange">Orange</li>
+    </ul>
+    <script>
+        // 노드객체의 상속구조
+
+        const $apple = document.getElementById('apple') // <- document 가 갖고있는 메서드 getElementById
+        // └> 노드객체는 좀 특별대우를 해주고싶어서 $ 를 붙히는 컨벤션이 꽤 많다.
+        //    이건 요소노드객체 라는 인식을 주는 일반적인 컨벤션이다. 
+
+        console.log($apple); // <- 원하는 것을 제대로 갖고왔다~
+        $apple.style.color = 'red'
+
+        // $apple.style['background-color'] = 'blue' // <---┐
+        $apple.style.backgroundColor = 'blue' // <----------┴-- 동일한 코드이다.
+
+        const $apple2 = document.getElementsByClassName('apple');
+        $apple2.style.backgroundColor = 'orange' // Cannot set property 'backgroundColor' of undefined 
+        //   ------------│ 여기까지 undefined 라는 것이다. (여기까지가 style 이라는 프로퍼티를 갖고있는 요소노드여야 한다.)
+        // $apple2 은 유사배열이기 때문에 순회하면서 변경해야 한다.
+    </script>
+</body>
+
+</html>

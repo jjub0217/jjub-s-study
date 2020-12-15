@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+
+<body>
+    <input type="text">
+    <ul id="fruits">
+        <li>Apple</li>
+        <li>Banana</li>
+        <li>Orange</li>
+    </ul>
+    <script>
+        const $input = document.querySelector('input');
+        const $ul = document.getElementById('fruits');
+
+        $ul.onclick = e => {
+            if (e.target.matches('#fruits > li')) return// e.target이 #fruits >li 로 가져올수 있느냐?
+            // └> 걸러내라. 특징을 잡아서.
+            console.log('onclick', e.target); // 어떤 요소가 이벤트를 발생시켰는지: e.target
+        } // <- 이벤트 위임
+
+        $input.onkeyup = e => {
+            if(e.key !== 'Enter') return
+            $ul.innerHTML += `<li>${$input.value}</li>`
+        }
+    </script>
+</body>
+
+</html>

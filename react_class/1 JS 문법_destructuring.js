@@ -14,7 +14,7 @@
 //  < 디스트럭처링 할당 >
 /*  - 구조 분해 할당
     - 배열과 객체에서 사용가능하다.
-        1. 객체 디스트럭처링 */
+        1. 객체 디스트럭처링 
 
         // 1번 방법
         const idol = {
@@ -22,20 +22,20 @@
             age: 31
         }
 
-        // const name = idol.name;
-        // const age = idol.age;
-        // console.log(name, age); // 이준호 31
+        const name = idol.name;
+        const age = idol.age;
+        console.log(name, age); // 이준호 31
 
         // 2번 방법
-        // const {name, age} = idol;
-        // console.log(name, age); // 이준호 31
+        const {name, age} = idol;
+        console.log(name, age); // 이준호 31
 
         // 3번 방법
-        // const {name, age} = { 
-        //     name: '이준호',
-        //     age: 31
-        // }
-        // console.log(name, age); // 이준호 31
+        const {name, age} = { 
+            name: '이준호',
+            age: 31
+        }
+        console.log(name, age); // 이준호 31
 
         // 4번 방법
         const { name: named, age: aged } = {
@@ -47,6 +47,6 @@
         // 2. 배열 디스트럭처링 
         const [name, age] = [ '이준호', 31 ]
         console.log(name, age); // 이준호 31 
-
+*/
 
         

@@ -35,6 +35,7 @@
             - new 연산자를 통해 Promise 객체를 만들면, 그 객체가 바로 어떤 상태에 빠지게 되는데, 
               그 상태가 지금 시작해서 진행중이야 라고 하는 상태이다. 
               그 상태가 성공하면, 성공이야! 실패하면 실패야.. 라고 알려주는 객체이다. 
+            - Promise 객체는, 결국 async - await 기능을 위한 밑그림이다. 
               function foo(){
                 return new Promise( (resolve2, reject) => { // <┐ 
                     setTimeout( () => { resolve2();//           │

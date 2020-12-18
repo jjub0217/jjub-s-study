@@ -7,7 +7,22 @@
 - CDN 을 통해 리액트 라이브러리인 React, React-DOM 을 사용
 - CDN : content를 제공하기 위해서(Delivery 하기 위해서) 만들어놓은 Network
 - what-is-react  폴더에서 작성 
-*/ 
+    1. npm init -y : 너 플젝 이름 뭐로 할래, 어써 누구야? 라는 너의 질문에 다 yes 라고 대답할거야
+    2. package.json 파일 생성됨
+    3. 서버를 띄우기 위해서 웹서버를 파인서버로 쉽게 띄울수 있는 라이브러리를 사용해보자
+    4. npm install serve -D : 서브라고 하는 걸 개발용으로 사용하겠다. 
+        - package.json 파일 제일 하단에  "devDependencies": { "serve": "^11.3.2"}" 라고 달리게 됨
+    5. package-lock.json 파일과 node_modules 폴더가 생성됨
+    6. serve 는 명령어로 실행가능하게 됨( 실행 명령어가, node_modules/.bin/serve 에 저장되어있음 )
+    7.  두가지 방법 
+        1. node_modules/.bin/serve 
+        2. npx serve ( npx : npm 이랑 같이 설치되는 명령어 )
+
+
+
+
+
+    */ 
 
     
 

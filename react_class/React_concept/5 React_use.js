@@ -17,11 +17,8 @@
     7.  두가지 방법 
         1. node_modules/.bin/serve 
         2. npx serve ( npx : npm 이랑 같이 설치되는 명령어 )
-
-
-
-
-
+    8. src 폴더 생성
+    9. index.html 파일 생성
     */ 
 
     

@@ -26,6 +26,7 @@
             - " A Javascript library for building user interface "
                 : 나는 user 인터페이스를 만들기 위한 자스 라이브러리야. 그 이상 그 이하도 아니야.
             - 뷰(user interface)를 만들어내는(다루는) 라이브러리다.
+            - 상태(statement)가 중요하다. ( 리액트에서는 url도 상태로 본다. )
         - 뷰 
             - " The Progressive Javascript framework "
                 : 라이브러리로 쓰고 싶으면 라이브러리처럼 쓰고, 프레임워크처럼 쓰고 싶으면 프레임워크처럼 써라.

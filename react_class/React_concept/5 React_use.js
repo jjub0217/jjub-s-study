@@ -18,7 +18,13 @@
         1. node_modules/.bin/serve 
         2. npx serve ( npx : npm 이랑 같이 설치되는 명령어 )
     8. src 폴더 생성
-    9. index.html 파일 생성
+    9. index.html 파일 생성 -> <h1>hello</h1> 기입
+    10. npx serve src : serve 의 src 를 실행 -> local:5000 새로고침 -> hello 텍스트 보임 
+    11. 이제 CDN을 통해서 리액트 라이브러리 사용해보자 
+    12. local:5000 새로고침 -> 변화된게 없어야 한다.  
+    13. index.html 에 script 태그 삽입 -> console.log(ReactDOM); console.log(React); 
+        -> 개발자도구 -> Object 2개 출력되어있을 것임.
+    14. 이제 index.html 에서 ReactDOM 을 이용해서 랜더를 해보자.
     */ 
 
     

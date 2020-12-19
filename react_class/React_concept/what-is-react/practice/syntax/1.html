@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Boyfriend</h1>
+    <div id="root"></div>
+
+
+
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script>
+        console.log(ReactDOM); //Object ------┐
+        console.log(React); // Object --------┴--- 대소문자 정확히 콘솔로그 안에기입해야 한다. 
+        // └> null 혹은 undefined 가 안나오는 것을 봐서는 해당 객체들이 존재한다는 뜻이다. 
+
+        // 1. ReactDOM 을 이용해서 랜더를 해보자
+        // 리액트 컴포넌트
+        /* ┌────*/const Component= () =>  
+        /* │*/    React.createElement('p', null, '안녕하세요'); // <- React로 된 요소를 반환하는 함수
+        /* │                         (type, props, children : 태그, 속성, 컨텐트 )
+           │        └> - 인수로 전달받은 것을 html 요소로 변환하여 반환한다.
+           │           - createElement 로 만들어진 요소는 바로 문서에 추가 할수 없다. 
+           │             실제로 추가하려면 appendChild 나 insertBefore 를 써야 한다.*/
+                // React.createElement('input', null, null);
+        /*
+           │
+        ///│//////////////////////////////////////////////////////////////////////////////////////////////
+           │
+           │
+           │*/   
+        /* │*/ReactDOM.render(
+        // │       ┌ 1. 리액트 컴포넌트
+        // │       ↓
+        /* └───>*/ React.createElement(Component, null, null),
+
+        //         └ 만든 컴포넌트를 사용하려면 createElement 메서드도 함께 사용해야 한다. 
+        //         ┌ 2. 실제 돔
+        //         ↓
+                   document.querySelector('#root') // <- div
+        );
+    </script>
+
+</body>
+
+</html>

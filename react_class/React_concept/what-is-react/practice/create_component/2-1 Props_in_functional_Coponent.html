@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 style="color: red">hello</h1>
+    <div id="root" style="border: 2px solid cadetblue"></div>
+
+
+
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel"> // <- 주의해서 꼭 넣자!!!
+
+
+// < Props 변경 >
+
+    const h1Style = {
+        color: "cadetblue"
+    }
+    const h2Style = {
+        color: "orange"
+    }
+
+      
+    /* function Component(props) {
+         console.log(props, props.children);
+
+         return (
+             <div> 
+                 <h1 style={style}>함수 컴포넌트</h1> 
+                 {props.children !== undefined && <p>children : {props.children}</p>} 
+                 {// └ 자식이 있을때만 p태그의 컨텐츠들이 나온다.}
+             </div>
+             )
+     }
+    // Object / Object{children: '준호'} / Object{children: '준호', 'name': 아이돌}
+
+    
+    // 바로 위 코드를 디스트럭처링 할당을 하게 되면, 바로 아래 코드처럼 하면 된다. */
+    function Component({children, name}) {
+
+        return (
+            <div> 
+                <h1 style={h1Style}>함수 컴포넌트</h1> 
+                {name !== undefined && <h2 style={h2Style}>{name}</h2>}
+                {children !== undefined && <p>children : {children}</p>} 
+            </div>
+            )
+    }
+  
+    /*
+    - props 나, state 가 변경된다면, 랜더함수를 다시 호출할수 있다. 
+    - props를 다르게 넣는 다는 것은, 어떠한 이유에 의해서 예를들면, 
+      기존의 <Component/> 를 -> <Component name="요섭"/> 으로 바뀌게 하는 것이다.
+    - props 를 변경시키는 방법들 중 꼼수는, setTimeout 함수를 사용하는 것이다. ─┐
+                                                                                │*/
+    ReactDOM.render(//                                                          │
+        <div>{/*                                                                │*/}
+            <Component/>{/*                                                     │*/}   
+            <Component>준호</Component>{/*                                      │*/}
+            <Component name="idol">준호</Component>{/*                          │*/}
+        </div>,//                                                               │
+        document.querySelector('#root')//                                       │
+        )//                                                                     │
+    //                                                                          │
+    //                                                                          │
+    //                                                                          │
+    //                                                                          │
+    setTimeout( () => {  // ─────────────────────────┐                          │
+    ReactDOM.render(//                               │                          │
+    <div>{/*                                         │                          │*/}
+        <Component name="요섭"/>{/*                  │                          │*/}
+        <Component>준호</Component>{/*               │                          │*/}
+        <Component name="idol">준호</Component>{/*   │                          │*/}
+    </div>,//                                        │<<<<<─────────────────────┘
+    document.querySelector('#root')//                │
+            )//                                      │
+        }, 2000//                                    │   
+    )// ─────────────────────────────────────────────┘
+
+
+
+          </script>
+
+</body>
+
+</html>

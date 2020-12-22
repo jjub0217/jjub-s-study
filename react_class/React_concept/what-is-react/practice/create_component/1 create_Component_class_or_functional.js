@@ -30,15 +30,20 @@
 
         import React from 'react';
         
-        class ClassComponent extends React.Component {
-            render () {
-                return (<div>hello</div>)
-                
+        class Component extends React.Component {
+            render(){
+                return (
+                    <div>
+                        <h1>클래스컴포넌트</h1>
+                    </div>
+                );
             }
         }
-        
-        <ClassComponent/>
-        
+
+        ReactDOM.render(
+            <Component/>,
+            document.querySelector('#root') 
+        )
 
     2. function 키워드로 컴포넌트 만드는 법
         - 일반 함수 내부에 랜더함수 없어도 된다. 하지만 리턴값은 반드시 있어야 한다. 

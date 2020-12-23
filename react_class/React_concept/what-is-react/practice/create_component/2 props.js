@@ -5,6 +5,7 @@
 < Props >
    - 컴포넌트 외부에서 컴포넌트에게 주는 데이터
    - 외부에서 내가 지은 태그에 뭔가 데이터를 넣을때, 사용하는 것
+   - props 를 변경하려면, 부모들 중에 어떤 부모가 state가 변경되는 일이 발생하여, props 에게 변경된 props 를 전달한다.
    - html 에서는 어트리뷰트(속성)같은것 (예시: html 에서는 src => react 애서는 props) 
       - 예시1: <Component/> => {}
       - 에시2: <Component>자식</Component> => {children : "자식"}

@@ -53,7 +53,7 @@
      // 바로 위 코드를 디스트럭처링 할당을 하게 되면, 바로 아래 코드처럼 하면 된다. 
     //  - (주의요망!!!!!!!) Class 키워드 사용한 컴포넌트 함수 내부에서 Props 변경 조작 : this.props 객체
 
-    class Component extends React.Component {
+    class ClassComponent extends React.Component {
             render(){
                 // console.log(JSON.stringify(this.props));
                 /* 
@@ -81,9 +81,9 @@
                                                                                 │*/
     ReactDOM.render(//                                                          │
         <div>{/*                                                                │*/}
-            <Component/>{/*                                                     │*/}   
-            <Component>준호</Component>{/*                                      │*/}
-            <Component name="idol">준호</Component>{/*                          │*/}
+            <ClassComponent/>{/*<- ClassComponent 라는 이름의 class 함수 실행    │*/}   
+            <ClassComponent>준호</ClassComponent>{/*                            │*/}
+            <ClassComponent name="idol">준호</ClassComponent>{/*                │*/}
         </div>,//                                                               │
         document.querySelector('#root')//                                       │
         )//                                                                     │
@@ -94,9 +94,9 @@
     setTimeout( () => {  // ─────────────────────────┐                          │
     ReactDOM.render(//                               │                          │
     <div>{/*                                         │                          │*/}
-        <Component name="요섭"/>{/*                  │                          │*/}
-        <Component>준호</Component>{/*               │                          │*/}
-        <Component name="idol">준호</Component>{/*   │                          │*/}
+        <ClassComponent name="요섭"/>{/*             │                          │*/}
+        <ClassComponent>준호</ClassComponent>{/*     │                          │*/}
+        <ClassComponent name="idol">준호</ClassComponent>{/*   │                │*/}
     </div>,//                                        │<<<<<─────────────────────┘
     document.querySelector('#root')//                │
             )//                                      │

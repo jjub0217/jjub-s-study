@@ -18,19 +18,21 @@
         - 컴포넌트 내부에 상태(state)가 없다면? 
             - 라이프사이클이 있다면? : class 키워드 사용
             - 라이프사이클이 없다면? : function 키워드 사용
-    - <ClassComponent Hooks 이후의 컴포넌트 만드는 법 >
+    - <Hooks 이후의 컴포넌트 만드는 법 >
         - class 키워드 사용 ──────┐
         - function 키워드 사용 ───┴─── 둘중에 뭘 써야 하나요? -> function 키워드 사용하자.
                                         └ class 와 function 사용은 사바사이다. 
                                         └ 요즘 트랜드는 function 이다. 
     1. class 키워드로 컴포넌트 만드는 법
         - 클래스 함수 내부에 랜더함수와, 랜더함수에 내부에 리턴값이 반드시 있어야 한다. 
+        - class 키워드로 만든 컴포넌트(이하, 클래스 컴포넌트) 내부의 this = 클래스 컴포넌트의 인스턴스
+          (클래스 컴포넌트 내부에는 인스턴스가 존재한다.)
         - 랜더 함수 내부에 createElement 가 들어거야 하는 것이 정해진 형식인데,
-          createElement 쓰기 복잡하니까 JSX 를 쓰자. 
+        createElement 쓰기 복잡하니까 JSX 를 쓰자. 
 
         import React from 'react';
-        
-        class Component extends React.Component {
+        class (내가 만드는 컴포넌트 이름) extends React.Component
+        class classComponent extends React.Component {
             render(){
                 return (
                     <div>
@@ -41,13 +43,16 @@
         }
 
         ReactDOM.render(
-            <Component/>,
+            <classComponent/>,//<- classComponent 라는 이름의 class 함수 실행  
+
             document.querySelector('#root') 
         )
 
     2. function 키워드로 컴포넌트 만드는 법
         - 일반 함수 내부에 랜더함수 없어도 된다. 하지만 리턴값은 반드시 있어야 한다. 
-    
+        - function 키워드로 만든 컴포넌트(이하, 함수 컴포넌트) 내부에는 this가 존재하지 않는다.  
+          함수 컴포넌트의 내부에는 인스턴스가 존재하지 않기 때문이다.  
+          (클래스 컴포넌트 내부에는 인스턴스가 존재한다.)
         import React from 'react';
 
         // 방법1
@@ -65,4 +70,4 @@
             return <div>hello</div>
         }
 
-        <FunctionalComponent/>*/
+        <FunctionalComponent/>//<- FunctionalComponent 라는 이름의 class 함수 실행        */

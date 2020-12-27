@@ -89,9 +89,8 @@
            onClick 과, this.click 이라는 함수를 연결시켰다.                                                      │
                                                                                                                 │*/
         click = () => {//                                                                                       │
-            console.log(this);// <- classComponent{click 화살표 함수, props{name: "Hanna", children: "짜식들"}, state:{count: 2, name: "개명전"}} 
-            console.log('클릭했음', this.state.count );//                                                        │
-            // ┌ 여기서 state 를 업데이트해보자  ─────────────────────────────────────────────────────────────────┘
+            console.log('클릭했음', this.state.count );//                                                       │
+            // ┌ 여기서 state 를 업데이트해보자  ────────────────────────────────────────────────────────────────┘
                 // this.setState({count: this.state.count + 1}) // 기존의 state 를 가져와서 -> 추가 작업을 하고 -> 그 값을 setState에 전달한다. -> 귀찮아
             //                      ↓ (업데이트 : 형태가 정해져있다. )
             // this.setState((state)=>({count: state.count + 1})) // <- 이 함수는 이전 state 를 인수로 받고, 새 state 를 리턴해야 한다.

@@ -17,7 +17,7 @@
     - props 를 변경시키는 방법들 중 꼼수는, setTimeout 함수를 사용하는 것이다. 
    - function 키워드로 컴포넌트 만드는 경우의 props 사용법
       
-      function Component({children, name}) {
+      function FunctionalComponent({children, name}) {
 
         return (
             <div> 
@@ -31,9 +31,9 @@
 
       ReactDOM.render(                                                          
         <div>                                                                
-        <Component/>                                                        
-        <Component>준호</Component>                                      
-        <Component name="idol">준호</Component>                          
+        <FunctionalComponent/>                                                        
+        <FunctionalComponent>준호</FunctionalComponent>                                      
+        <FunctionalComponent name="idol">준호</FunctionalComponent>                          
     </div>,                                                               
     document.querySelector('#root')                              
     )                                                                 

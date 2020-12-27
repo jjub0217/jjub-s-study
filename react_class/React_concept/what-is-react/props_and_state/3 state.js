@@ -15,7 +15,8 @@
       - State 초기값 설정
          1. state = {};
             - Class 컴포넌트 내부에서 초기설정한 State 사용 (this.state.프로퍼티키 로 접근 )
-                  class Component extends React.Component { // <- virtual DOM 의 형태를 만든것
+                  class (내가 만드는 컴포넌트 이름) extends React.Component
+                  class ClassComponent extends React.Component { // <- virtual DOM 의 형태를 만든것
                   
                      state = { 
                         count: 1, 

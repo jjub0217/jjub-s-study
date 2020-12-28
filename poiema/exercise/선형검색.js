@@ -1,5 +1,5 @@
 function linearSearch(array, target) {
-    // console.log(array.length);
+    console.log(array, target); // [ 1, 2, 3, 4, 5, 6 ] 1
     for (let i = 0; i < array.length; i++) {
         // console.log(array[i]);
         if (typeof array[i] === typeof target) {

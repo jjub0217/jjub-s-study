@@ -13,3 +13,4 @@ function isSorted(array) {
 // console.log(isSorted([1, 2, 3, 4, 5])); // true
 // isSorted([1, 2, 3, 4, 5]); // true
 console.log(isSorted([2, 3, 4, 1, 5])); // false
+

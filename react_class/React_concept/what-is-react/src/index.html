@@ -40,21 +40,33 @@
         //      - 랜더함수의 형식이 정해져 있어야 한다.
         //          - 랜더함수 내부에 React 엘리먼트가 들어가야 하는데, 
         //            createElement 쓰기 번거로우니까 JSX 를 쓰자.
-
-        // ┌ State 초기값을 설정해보자 ──────────────────────────────────────────────────────────────────────────────────────────┐
-        constructor(props){ //                                                                                                  │
-            super(props); // <- 상속받아서 생성자를 사용할 때 기입 (React.Component 의 생성자)                                    │
+        /* ┌ State 초기값을 설정해보자 ──────────────────────────────────────────────────────────────────────────────────────────┐
+        // 설정방법 2                                                                                                           │*/
+        state = {//                                                                                                             │
+            count: 1,//                                                                                                         │
+            name: '개명전'//                                                                                                    │
+            }//                                                                                                                 │
+        //                                                                                                                      │
+        // 설정방법 1                                                                                                           │
+        /*constructor(props){ //                                                                                                │
+            super(props);
             console.log(props);// <-  {name: "Hanna", children : "짜식들"}                                                      │
             this.state = {//                                                                                                    │
                 count: 1,//                                                                                                     │
                 name: '개명전'//                                                                                                │
             }//                                                                                                                 │
-        }//                                                                                                                     │
+            console.log(this); //  <- ClassComponent 라는 클래스                                                                │
+            this.click = this.click.bind(this); //                                                                              │
+            // └> click 함수 =  ClassComponent 라는 클래스 내부에 있는 click 이라는 함수에, ClassComponent 라는 클래스를 binding  │
+            console.log(this.click); //  <- click 함수                                                                          │
+        }                                                                                                                       │*/
+        //                                                                                                                     │
         //                                                                                                                      │
         //                                                                                                                      │
     // 클래스 컴포넌트의 props 객체는, 클래스 함수의 인스턴스가 발생했을 때 생기는 this.props 가 반환된다.                          │
         render(){ //                                                                                                            │
-            console.log(this); // <- classComponent { click 화살표함수 , props : { name: "Hanna", children: "짜식들"}}           │                             
+            console.log(this); //                                                                                              │
+            // └> classComponent 라는 클래스{ click 화살표함수 , props : { name: "Hanna", children: "짜식들"}}                   │                             
             console.log(JSON.stringify(this.props));//                                                                          │
             /* //   {}                                                                                                          │
                     {"name":"Hanna",                                                                                            │
@@ -65,20 +77,19 @@
             return ( //                                                            │                                            │
                 <div> {/*                                                          │                                            │*/}
                     <h1 style={h1Style}>클래스컴포넌트</h1>{/*                      │                                            │*/}   
-                    {console.log(<h1 class="hum"><b>클래스컴포넌트</b></h1>)}{/*    │                                            │*/}
                     <h2 style={h2Style}>{name}</h2>{/*                             │                                            │*/}   
                     <p>children : {children}</p>{/*                                │                                            │*/} 
-                {/* <p>count: {this.state.count}</p>                               │                                            │*/}
                     <p>count: {count} {/*                                          │                                            │*/} 
                           <button onClick={this.click}>+</button>{/* = <button onclick="this.click(event 객체)">+</button>      │ 
                                     │     ￣￣￣￣￣￣└ 이벤트 핸들러의 콜백함수     │                                            │*/}
                     </p>{/* ───────────────────────────────────────────────────────┘<<<─────────────────────────────────────────┘*/}
                     <div style={border}>{/* ────────────────────────────────────────────────────────────────────┐*/}  
-                        <FunctionComponent name={this.state.name}/>{/*                                          │
+                        <FunctionComponent name={this.state.name} onClick={this.click}/>{/*                     │                      
+                        └> onClick={this.click} : 클래스의 click 이란 함수를, onClick 이벤트타입에 바인딩.        │
                           └> name 은 원래 state의 값인 "개명전" / children 은 없으므로 디폴트값인 "Hanna" 로 됨   │*/}   
-                        <FunctionComponent>자식</FunctionComponent>{/*                                          │   ───>>> 함수 컴포넌트의 props 를      
+                        <FunctionComponent onClick={this.click}>자식</FunctionComponent>{/*                     │   ───>>> 함수 컴포넌트의 props 를      
                           └> name 은 없으므로 디폴트값인 "Hanna"로 됨 / children 은 현재 children 값인 "자식"     │          바꿔주고 있는것은,        */}                               
-                        <FunctionComponent name="준호">자식</FunctionComponent>{/*                               │         함수 컴포넌트의 부모인,
+                        <FunctionComponent name="준호" onClick={this.click}>자식</FunctionComponent>{/*         │         함수 컴포넌트의 부모인,
                           └> name 은 현재 name 값인 "준호"로 됨 / children 은 현재 children 값인 "자식"           │         클래스 컴포넌트의 state가
                                                                                                                 │         바꿔주고 있다.            */}
                     </div>{/*                                                                                   │*/}   
@@ -89,8 +100,8 @@
            onClick 과, this.click 이라는 함수를 연결시켰다.                                                      │
                                                                                                                 │*/
         click = () => {//                                                                                       │
-            console.log(this);// <- classComponent{click 화살표 함수, props{name: "Hanna", children: "짜식들"}, state:{count: 2, name: "개명전"}} 
-            console.log('클릭했음', this.state.count );//                                                        │
+            console.log(this);// <- classComponent{click 함수, props{name: "Hanna", children: "짜식들"}, state:{count: 2, name: "개명전"}} 
+            console.log('클릭했음', this );//                                                      │
             // ┌ 여기서 state 를 업데이트해보자  ─────────────────────────────────────────────────────────────────┘
                 // this.setState({count: this.state.count + 1}) // 기존의 state 를 가져와서 -> 추가 작업을 하고 -> 그 값을 setState에 전달한다. -> 귀찮아
             //                      ↓ (업데이트 : 형태가 정해져있다. )
@@ -109,13 +120,18 @@
         
     } // <- 기본적인 최소 요건을 만족하는, 이름이 component 인 클래스 함수를 만들었다. 
 
-    function FunctionComponent({children, name}) {
+    function FunctionComponent({children, name, onClick}) {
          
+        // Mouseover = () => {
+        //     console.log('마우스 갖다댔다');
+        // }
+
          return (
              <div> 
                 <h1 style={h1Style}>함수 컴포넌트</h1> 
                 {name !== undefined && <h2 style={h2Style}>{name}</h2>}
-                {children !== undefined && <p>children : {children}</p>} 
+                {children !== undefined && <p>children : {children}</p>}
+                <input placeholder="인풋" onClick={onClick}/>
                 </div>
                 )
             }

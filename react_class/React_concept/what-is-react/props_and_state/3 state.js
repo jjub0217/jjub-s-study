@@ -1,6 +1,7 @@
 // << State  >>
 /* 
 - 기존에 그려졌던 props 나 state 의 변경이 발생하면, 랜더를 다시 할수 있다. (랜더함수가 다시 호출된다.)
+  즉, render 함수를 동작하게끔 하는 것은 props 나 state 의 변경이다.
 - Hooks 
    - class 컴포넌트 아니어도(functional 컴포넌트에서) 
      state 와 다른 React의 기능들을 사용할수 있게 해준다. 

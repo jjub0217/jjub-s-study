@@ -29,6 +29,8 @@
           (클래스 컴포넌트 내부에는 인스턴스가 존재한다.)
         - 랜더 함수 내부에 createElement 가 들어거야 하는 것이 정해진 형식인데,
         createElement 쓰기 복잡하니까 JSX 를 쓰자. 
+        - 클래스 컴포넌트는, 원래 javascript 의 class 이기 때문에, new (클래스이름)(); 해야 class 함수가 실행되는 것이지만, 
+          React 라이브러리를 사용하면, new 키워드를 사용하지 않아도 인스턴스가 생성되며 class 함수가 실행되는 것이다.  
 
         import React from 'react';
         class (내가 만드는 컴포넌트 이름) extends React.Component

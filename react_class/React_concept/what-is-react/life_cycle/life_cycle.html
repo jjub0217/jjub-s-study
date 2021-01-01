@@ -138,7 +138,8 @@
         }
         render() {
             console.log('render'); // <- 3. 3번째로 찍힘.
-            const {count}  = this.state;
+            const {count}  = this.state; // <- App 이라는 class 함수를, new 키워드를 사용해서 생성할 인스턴스의 this 가 아니라, 
+                                         //    리액트가 자동으로 생성할 인스턴스의 this 이다. 
             return ( // <- 여기에서는 그려야겠다. 
             <div> 
                 <p>{count}</p>
@@ -153,7 +154,7 @@
         }
 
         componentWillMount(){   // <- 2.  2번째로 찍힘. (안 그려져있는 상태)
-            console.log('componentWillMount'); // <- 랜더 활용하면 안된다. 
+            console.log('componentWillMount'); // <- 여기에서는 랜더 활용하면 안된다. 
         }
         componentDidMount() { // <- 4. 4번째로 찍힘. (그려져 있는 상태) 
             console.log('componentDidMount'); /* <- 랜더 활용할수 있다. (랜더된 직후니까.) 

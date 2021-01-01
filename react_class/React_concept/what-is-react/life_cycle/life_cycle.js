@@ -21,7 +21,49 @@
                 - component 생성 및 마운트 ( component 탄생 : 유니폼 입고 축구장 입장 전 - 축구장 입장 )
                     - constructor(초기화: Initialization) -> getDerivedStateFromProps(밥먹기전 행위: props로부터 state를 derive 한다) 
                          -> render(최초 랜더) -> componentDidMount
-    */
+        - 원래 실행동작 과정
+            예시:
+
+            class App extends React.Component {
+                state = {
+                    count: 0
+                }
+
+                render() {
+                    console.log('render'); // <- 3. 3번째로 찍힘.
+                    const {count}  = this.state;
+                    return (
+                    <div> 
+                        <p>{count}</p>
+                        </div>
+                    )
+                }
+
+                constructor(props){ // <- 1. 1번째로 찍힘.
+                    super(props)
+                    console.log('constructor');
+
+                }
+
+                componentWillMount(){   // <- 2.  2번째로 찍힘. (안 그려져있는 상태)
+                    console.log('componentWillMount'); // <- 여기에서는 랜더 활용하면 안된다. 
+                }
+
+                componentDidMount() { // <- 4. 4번째로 찍힘. (그려져 있는 상태) 
+                    console.log('componentDidMount'); /* <- 랜더 활용할수 있다. (랜더된 직후니까.) 
+                                                            1. 타이머 
+                                                            2. API 호출
+                                                            3. 랜더 된 결과물에 뭔가 하기 (최초에만 해야 하는 일들만) *//*
+                }
+            } // <- 클래스 선언 
+
+            
+            const app = new App(); : JSX 의 처음으로 출연 (constructor) 
+            -> app.componentWillMount(); : 어떤 타이밍이 되었을 때, 리액트 라이브러리가 알아서 componentWillMount 함수 호출 하여 실행.
+            -> app.render()
+            -> app.componentDidMount(); 
+            
+            // 선언한 클래스를 수행(동작)하는건 리액트 라이브러리 이다. 
 
 
 
@@ -30,9 +72,16 @@
 
 
 
+            */
 
 
 
+
+
+
+
+
+// 26분일때   48분
 
 // 12 ~ 1시간 2분
 // 1시간 12분 ~ 2시간 2분

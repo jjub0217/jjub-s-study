@@ -83,11 +83,12 @@
                           <button onClick={this.click}>+</button>{/* = <button onclick="this.click(event 객체)">+</button>     │ 
                                            ￣￣￣￣￣￣└ 이벤트 핸들러의 콜백함수     │                                           │*/}
                     </p>{/* ───────────────────────────────────────────────────────┘<<<────────────────────────────────────────┘*/}
-                    <div style={border}>{/* ───────────────────────────────────────────────────────────────────┐*/}  
-                        {count < 10 && <FunctionComponent name={this.state.name} onClick={this.click}/>}{/*    │                      
+                    <div style={border}>{/* ────────────────────────────────────────────────────────────────────┐*/}  
+                        {count < 5 && (<FunctionComponent name={this.state.name} onClick={this.click}/>)}{/*    │                      
                         └> onClick={this.click} : 클래스의 click 이란 함수를, onClick 이벤트타입에 바인딩.         │
                           └> 얘를 보이다가 안보이게 하려고 한다.                                                   │
-                              : 부모들중에 보이다가 안보이게 하는 변화를 줘야 한다  (props 나 state로 )              │*/}   
+                              : 부모들중에 보이다가 안보이게 하는 변화를 줘야 한다  (props 나 state로 )              │*/}
+                        {count < 10 && <App/>}{/*                                                               │*/}
                     </div>{/*                                                                                   │*/}   
                 </div>//                                                                                        │                    
             );//                                                                                                │
@@ -97,22 +98,21 @@
                                                                                                                 │*/
         click = () => {//                                                                                       │
             console.log(this);// <- classComponent{click 함수, props{name: "Hanna", children: "짜식들"}, state:{count: 2, name: "개명전"}} 
-            console.log('클릭했음', this );//                                                                    │    
+            console.log('클릭했음', this);//                                                                    │    
             // ┌ 여기서 state 를 업데이트해보자  ─────────────────────────────────────────────────────────────────┘
                 // this.setState({count: this.state.count + 1}) // 기존의 state 를 가져와서 -> 추가 작업을 하고 -> 그 값을 setState에 전달한다. -> 귀찮아
             //                      ↓ (업데이트 : 형태가 정해져있다. )
             // this.setState((state)=>({count: state.count + 1})) // <- 이 함수는 이전 state 를 인수로 받고, 새 state 를 리턴해야 한다.
             //                      ↓ 
             this.setState(({count})=>({count: count + 1})) // <- 이 함수는 이전 state 를 인수로 받고, 새 state 를 리턴해야 한다.
-
         }
 
-            // 2. default Props 사용방법2 
-            static defaultProps = {  // ───┐   
-            name: "Hanna",//               │ 
-            children: "짜식들"//            │ Component 라는 클래스 함수의 클래스메소드 혹은 클래스변수
-          //                               │ (props 가 없는 컴포넌트가 있다면 해당 프로퍼티 값들을, 해당 props로 지정해주는 것)
-        } // ──────────────────────────────┘
+        // 2. default Props 사용방법2 
+        static defaultProps = {  // ───┐   
+            name: "Hanna",//           │ 
+            children: "짜식들"//        │ Component 라는 클래스 함수의 클래스메소드 혹은 클래스변수
+        //                             │ (props 가 없는 컴포넌트가 있다면 해당 프로퍼티 값들을, 해당 props로 지정해주는 것)
+        } // ──────────────────────────┘
         
     } // <- 기본적인 최소 요건을 만족하는, 이름이 component 인 클래스 함수를 만들었다. 
 
@@ -127,40 +127,67 @@
                 <h1 style={h1Style}>함수 컴포넌트</h1> 
                 {name !== undefined && <h2 style={h2Style}>{name}</h2>}
                 {children !== undefined && <p>children : {children}</p>}
-                <input placeholder="인풋" onClick={onClick}/>
+                <button onClick={onClick}>클릭</button>
                 </div>
                 )
-            }
+    }
+
+    FunctionComponent.defaultProps = {
+        name: 'Hanna',
+        children: '짜식들'
+    }
 
     class App extends React.Component {
+
+        count = 0;
+
         state = {
             count: 0
         }
-        render() {
-            console.log('render'); // <- 3. 3번째로 찍힘.
-            const {count}  = this.state; // <- App 이라는 class 함수를, new 키워드를 사용해서 생성할 인스턴스의 this 가 아니라, 
-                                         //    리액트가 자동으로 생성할 인스턴스의 this 이다. 
+
+        timer = null;
+
+        render(...args) {
+            console.log('render', args); // <- 3. 3번째로 찍힘. / args : 배열 [] <- 빈배열
+            const {count}  = this.state;
             return ( // <- 여기에서는 그려야겠다. 
             <div> 
-                <p>{count}</p>
+                <p>{count} : state 의 count // {this.count} : this의 count</p>
+                <button onClick={this.click}>App의 버튼</button>    
                 </div>
             )
         }
 
-        constructor(props){ // <- 1. 1번째로 찍힘.
-            super(props)
+        constructor(props){ // <- 1. 1번째로 찍힘. (생성자)
+            super(props) 
             console.log('constructor');
-
         }
 
-        componentWillMount(){   // <- 2.  2번째로 찍힘. (안 그려져있는 상태)
-            console.log('componentWillMount'); // <- 여기에서는 랜더 활용하면 안된다. 
+        click = () => {
+            this.setState(({count}) => ({count: count +1}))
+            //             ￣￣￣│       ￣￣￣￣￣￣￣￣￣└> 새로운 state
+            //                   └>기존 state    
         }
-        componentDidMount() { // <- 4. 4번째로 찍힘. (그려져 있는 상태) 
-            console.log('componentDidMount'); /* <- 랜더 활용할수 있다. (랜더된 직후니까.) 
-                                                    1. 타이머 
-                                                    2. API 호출
+        componentWillMount(...args){   // <- 2.  2번째로 찍힘. (안 그려져있는 상태)
+            console.log('componentWillMount', args); // <- 랜더 활용하면 안된다. / args : 배열 <- [] 빈배열
+        }
+
+        componentDidMount(...args) { // <- 4. 4번째로 찍힘. (그려져 있는 상태) 
+            console.log('componentDidMount', args); /* <- 랜더 활용할수 있다. (랜더된 직후니까.)  / args : 배열 <- [] 빈배열
+                                                    1. 타이머 */
+                                                    this.timer = setInterval(() => {
+                                                        console.log('쨘', this.count++);
+                                                    }, 1000)
+                                                    /*2. API 호출 : 비동기 (클릭을 하면 API를 호출 -> 네트워크를 따라서 서버에 가서 API 호출 
+                                                                            -> 연산 -> 받아옴 -> 없어지면 에러가 나기 때문에 처리해야 함 )  
                                                     3. 랜더 된 결과물에 뭔가 하기 (최초에만 해야 하는 일들만) */
+        } 
+
+        componentWillUnmount(...args){
+            console.log('componentWillUnmount', args);
+
+            //  ┌ 위에 DidMount 에서 한 setInterval 을 사망시켜야 한다. 
+            clearInterval(this.timer)//<- 타이머 생성할때 만든 interval 의 아이디를 인수로 넣어야 한다. 
         }
     }
     
@@ -169,13 +196,13 @@
       기존의 <Component/> 를 -> <Component name="요섭"/> 으로 바뀌게 하는 것이다. */
     ReactDOM.render(                                         
         <div>          
-            <App/>                                                      
+            {/*<App/>*/}                                                      
             <ClassComponent/> {/*<- ClassComponent 라는 이름의 class 함수 실행*/}                                                            
         </div>,                                                               
         document.querySelector('#root')                                       
     )                         
 
-          </script>
+</script>
 
 </body>
 
